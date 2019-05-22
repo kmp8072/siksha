@@ -1458,11 +1458,88 @@ return $getrecord->data;
   public static function courses_of_program_parameters() {
         return new external_function_parameters(
                 array( 
-                  'programid' => new external_value(PARAM_INT,'PROGRAM ID')  
+                  'programid' => new external_value(PARAM_INT,'PROGRAM ID'),
+                  'userid' => new external_value(PARAM_INT,'USER ID')  
                 ));
 }
- public static function courses_of_program($programid) {
+ public static function courses_of_program($programid,$userid) {
          global $USER,$DB;
+
+         $courseinfo=array();
+         $current_year=date("Y");
+
+         // find the induction start date of this user
+
+  $induction_start_date_query="SELECT induction_start_date FROM {guru_nj_mapping} WHERE nj_id=$userid";
+
+  $induction_start_date_obj=$DB->get_record_sql($induction_start_date_query);
+
+  $induction_start_date=$induction_start_date_obj->induction_start_date;
+
+  $induction_start_date_format=date('d-m-Y', $induction_start_date);
+
+  // if induction not started just return 
+
+  if (is_null($induction_start_date) ||  $induction_start_date=='') {
+    
+    $courseinfo['courses'][]=array("id"=>0,"category"=>0,"fullname"=>'',"shortname"=>'',"tag"=>0);
+     $courseinfo['induction_status']=0;
+  
+    return $courseinfo;
+
+  }
+
+  // we need to find which course should be shown
+
+  // get the induction day number using the induction start date sat sun and holiday dates
+
+  $current_date=time();
+  $current_date_format=date("d-m-Y");
+  $$no_of_courses_to_open=0;
+
+  // current time should be greater than induction start date
+
+  if ($current_date>=$induction_start_date) {
+    // check no of sat sun and holiday between current date and induction start date
+
+     $startDate = $induction_start_date_format; 
+     $endDate = $current_date_format; 
+         
+        $startDate = new DateTime($startDate);
+        $endDate = new DateTime($endDate);
+
+        $weekoffdays = array();
+
+
+      while ($startDate <= $endDate) {
+          if ($startDate->format('w') == 0 || $startDate->format('w') == 6) {
+              $weekoffdays[] = $startDate->format('d-m-Y');
+          }
+
+          $startDate->modify('+1 day');
+      }
+
+      $no_of_weekoff_days=count($weekoffdays);
+
+      $weekoffdays=implode("','",$weekoffdays);
+
+      $weekoffdays="'" .$weekoffdays. "'";
+
+      
+    // now find the no of holidays between these two dates
+
+     $no_of_holidays_query="SELECT COUNT(id) AS no_of_holiday FROM {holiday_dates} WHERE year=$current_year AND UNIX_TIMESTAMP(holiday_date)>=$induction_start_date AND UNIX_TIMESTAMP(holiday_date)<=$current_date AND DATE_FORMAT(STR_TO_DATE(holiday_date, '%Y-%m-%d'), '%d-%m-%Y') NOT IN ($weekoffdays)";
+
+    $no_of_holidays_obj=$DB->get_record_sql($no_of_holidays_query);
+
+    $no_of_holiday=$no_of_holidays_obj->no_of_holiday;
+
+    $no_of_days_between_dates=round(($current_date-$induction_start_date)/86400);
+
+     $no_of_courses_to_open=$no_of_days_between_dates+1-$no_of_holiday-$no_of_weekoff_days;
+    
+  }
+
          
          // first find the course-sets for this program
 
@@ -1483,7 +1560,9 @@ return $getrecord->data;
     
     // now find course details and return these details
 
-    $courseinfo=array();
+    $course_count=1;
+
+    //one use case may be $courseids_objs is empty which is not considered yet
 
     foreach ($courseids_objs as $courseids_obj) {
      
@@ -1493,35 +1572,62 @@ return $getrecord->data;
 
      $course_details=$DB->get_record_sql($course_details_query);
 
-     // we need to find which course should be shown
+     if ($course_count<=$no_of_courses_to_open) {
 
-     $courseinfo[]=$course_details;
+       $course_details->tag=1;
+
+     }else{
+
+       $course_details->tag=0;
+     
+     }
+
+     //find the induction start date
+
+     $courseinfo['courses'][]=$course_details;
+
+     $course_count++;
 
     }
 
+    $courseinfo['induction_status']=1;    
+
+    //  print_object($courseinfo);
+    // die();
+
     return $courseinfo;
 
-    // print_object($courseinfo);
-    // die();
+   
        
 }
 
  public static function courses_of_program_returns() {  
-     return new external_multiple_structure(
+
+  // return null;
+
+     return new external_single_structure(
          
-              new external_single_structure(
-                
+        array(
+              'courses' => new external_multiple_structure(
+                new external_single_structure(
                   array(
 
                     'id'=>new external_value(PARAM_INT,'id'),
                     'category'=>new external_value(PARAM_INT,'category'),
                     'fullname'=>new external_value(PARAM_TEXT,'fullname'),
-                    'shortname'=>new external_value(PARAM_TEXT,'shortname')
-                    
+                    'shortname'=>new external_value(PARAM_TEXT,'shortname'),
+                    'tag'=>new external_value(PARAM_INT,'tag')
                   )
                 )
-         
-              );
+
+              ),  
+
+              'induction_status' => new external_value(PARAM_RAW,'induction_status')  
+
+            )
+      
+    );
+
 }
 
 
