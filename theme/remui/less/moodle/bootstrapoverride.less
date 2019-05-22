@@ -1,0 +1,185 @@
+/**
+ * bootstrapoverride.less
+ *
+ * This file is meant to contain rules which specifically override
+ * rules defined in Bootstrap.
+ */
+
+ /* override variables on bootstrap */
+ @input-color: darken(@gray, 70%);
+
+/** Point at which the navbar becomes uncollapsed. */
+@grid-float-breakpoint:     @screen-sm;
+//** Point at which the navbar begins collapsing. */
+@grid-float-breakpoint-max: (@screen-xs-max);
+
+
+// Printing.
+@media print {
+    a[href]:after {
+        content: "";
+    }
+}
+
+.moodleSkin .mceIcon img.mceIcon {
+    display: block;
+    height: auto;
+    width: auto;
+}
+
+/*
+ * Submenus are not supported in BS3 core.
+ */
+.dropdown-submenu {
+    position: relative;
+
+    a {
+      .caret {
+        display: none;
+      }
+    }
+
+    .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+        margin-left: -1px;
+        -webkit-border-radius: 0 6px 6px 6px;
+        -moz-border-radius: 0 6px 6px;
+        border-radius: 0 6px 6px 6px;
+    }
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+.progress .bar {
+    .progress-bar;
+}
+
+/* override bootstrap pagination */
+ul.pagination {
+    .previous, .next {
+        color: white;
+        background: @active-skin-color;
+        border-color: @active-skin-color;
+        border-radius: 0!important;
+
+        fa {
+            font-size: 1.8em;
+            line-height: 0.65em;
+        }
+    }
+
+    li a {
+        background: #F5F5F5;
+        color: #666;
+        margin: 0 2px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        background: #F5F5F5;
+        border: 1px solid #ececec;
+
+        &:hover {
+            color: #FFFFFF;
+            background-color: @active-skin-color;
+            border-color: @active-skin-color;
+        }
+    }
+
+    .current-page {
+        margin: 0 2px;
+        font-weight: 600;
+        background-color: @active-skin-color;
+        border-color: @active-skin-color;
+        border-radius: 0!important;
+
+        &:hover {
+            color: #FFFFFF;
+            background-color: @active-skin-color;
+            border-color: @active-skin-color;
+        }
+    }
+}
+
+input[type="submit"]{
+    vertical-align: top !important;
+}
+.list-group-item {
+    padding: 10px 5px;
+    border: 0;
+    border-top: 1px solid #e4e4e4;
+    &:first-child {
+        border: 0;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+    &:last-child {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+}
+
+/* responsive text align */
+@media (max-width: @screen-xs-max) {
+    .text-xs-left { text-align: left; }
+    .text-xs-right { text-align: right; }
+    .text-xs-center { text-align: center; }
+    .text-xs-justify { text-align: justify; }
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    .text-sm-left { text-align: left; }
+    .text-sm-right { text-align: right; }
+    .text-sm-center { text-align: center; }
+    .text-sm-justify { text-align: justify; }
+}
+
+@media (min-width: @screen-md-min)  and (max-width: @screen-md-max) {
+    .text-md-left { text-align: left; }
+    .text-md-right { text-align: right; }
+    .text-md-center { text-align: center; }
+    .text-md-justify { text-align: justify; }
+}
+
+@media (min-width: @screen-lg-min) {
+    .text-lg-left { text-align: left; }
+    .text-lg-right { text-align: right; }
+    .text-lg-center { text-align: center; }
+    .text-lg-justify { text-align: justify; }
+}

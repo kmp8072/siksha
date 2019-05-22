@@ -1,0 +1,382 @@
+.imghide {
+    opacity: 0;
+}
+.imgshow {
+    opacity: 1;
+}
+
+.userenrolment {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+ tr {
+    vertical-align:top;
+}
+tr:nth-of-type(odd) {
+    background-color: #f5f5f5;
+}
+td {
+    height: 41px;
+}
+.subfield {
+    margin-right: 5px;
+}
+.col_userdetails {
+    .subfield_picture {
+        float: left;
+    }
+}
+.col_lastseen {
+    width: 150px;
+}
+.col_role {
+    width: 262px;
+}
+.hasAllRoles {
+    .col_role {
+        .addrole {
+            display: none;
+        }
+    }
+}
+.col_enrol {
+    .enrolment {
+        float: left;
+        padding: 3px;
+        margin: 3px;
+        a {
+            float: right;
+            margin-left: 3px;
+        }
+    }
+}
+.col_enrol.lastcol {
+    a > img {
+        &:extend(.imghide);
+    }
+}
+.col_enrol.lastcol:hover {
+    a > img  {
+        &:extend(.imgshow);
+    }
+}
+}
+
+.userenrolment .col_role .roles,
+.userenrolment .col_group .groups {
+    margin-right: 30px;
+}
+.userenrolment .col_role .role,
+.userenrolment .col_group .group {
+    float: left;
+    padding: 3px;
+    margin: 3px;
+    white-space: nowrap;
+}
+.userenrolment .col_role .role a,
+.userenrolment .col_group .group a {
+    margin-left: 3px;
+    cursor: pointer;
+}
+.userenrolment .col_role .addrole,
+.userenrolment .col_group .addgroup {
+    float: left;
+    padding: 3px;
+    margin: 3px;
+    > a:hover {
+        border-bottom:1px solid #666;
+    }
+}
+.userenrolment .col_role .addrole img,
+.userenrolment .col_group .addgroup img {
+    vertical-align: baseline;
+}
+
+.enrolpanel.roleassign.visible {
+    display: block;
+    z-index: 1100 !important;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    max-width: 300px;
+
+    .container {
+        top: 0;
+        background-color: #fff;
+        border: 1px solid #bbb;
+        border-radius: 0;
+        -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+        box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+        content: inherit;
+        display: block;
+        padding: 0;
+    }
+    a {
+        text-decoration: underline;
+    }
+
+    .header {
+        .pad;
+        padding-right: 30px;
+        font-size: 18px;
+        color: #333;
+        background-color: #fff;
+        border-bottom: 1px solid #e5e5e5;
+        border-bottom-color: #f4f4f4;
+        h2 {
+            text-align: left;
+        }
+        .close {
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            padding: 0;
+            top: 10px;
+            background-image: url([[pix:theme|close_x]]);
+            background-repeat: no-repeat;
+            &:hover {
+                background-image: url([[pix:theme|close_x]]);
+                background-position: center center;
+            }
+        }
+    }
+    .content {
+        .popover-content;
+        margin-top: 5px;
+        background-color: (lighten(@popover-bg, 10%));
+    }
+}
+
+
+#page-enrol-users {
+    .enrol_user_buttons {
+        float: right;
+        margin-bottom: 15px;
+        .enrolusersbutton {
+            display: inline;
+            div,
+            form {
+                display: inline;
+                margin-right: 0;
+            }
+        }
+    }
+    .felement.fgroup {
+        #id_submitbutton {
+            margin-right:5px;
+        }
+        #id_resetbutton {
+            margin-left: 5px;
+        }
+    }
+    #filterform {
+        width:100%;
+        fieldset {
+            width: 100% !important;
+            > div {
+                display:block;
+                .felement{
+                    padding: 0 5px;
+                    display: block;
+                    margin-top: 10px;
+                }
+                #fgroup_id_buttons {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                }
+            }
+        }
+        .well;
+        display: inline-block;
+        .fitem {
+            display: inline-block;
+            margin-right: .3em;
+            white-space: nowrap;
+            label {
+                display: inline;
+                line-height: @line-height-base;
+                padding-right: .3em;
+            }
+            :before,
+            :after {
+                display: inline;
+            }
+        }
+        div,
+        fieldset {
+            display: table;
+            float: none;
+            clear: none;
+            width: auto;
+            margin: 0;
+        }
+        select,
+        .ftext input {
+            width: 100%;
+        }
+        input,
+        select {
+            margin-bottom: 0;
+        }
+    }
+    .user-enroller-panel
+    {
+        z-index: 10100 !important;
+        .uep-wrap{
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .uep-search-results .user .details {
+         width: 237px;
+     }
+ }
+}
+
+// Modification for enrol/instance page.
+.box.generalbox.boxaligncenter.boxwidthnormal >  .urlselect {
+    &:extend(.text-center);
+    div > label {
+        &:extend(.pad);
+    }
+}
+
+// Modification for admin/role/permissions page.
+.box.generalbox.capbox{
+    div.advancedoverride {
+        display: inline-block;
+        padding: 10px;
+        float: left;
+    }
+    div.capabilitysearchui {
+        display: inline-block;
+        padding: 10px;
+        width: auto !important;
+
+        input {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 6px 12px;
+            margin: 0 10px;
+            margin-left: 0;
+        }
+    }
+}
+
+
+.rolecap {
+    &:extend(.table, .table-striped);
+}
+
+table thead tr th,
+table tbody tr th,
+table tbody tr td {
+    padding:10px;
+}
+
+table tbody tr:nth-of-type(odd) {
+    background-color: #f5f5f5;
+}
+
+
+.rolecap {
+    td.allowedroles {
+        span.allowed {
+            a.preventlink {
+                &:extend(.imghide);
+            }
+        }
+        span.allowed:hover {
+            a.preventlink {
+                &:extend(.imgshow);
+            }
+        }
+    }
+}
+
+.role {
+    a.unassignrolelink {
+        &:extend(.imghide);
+    }
+}
+.role:hover {
+    a.unassignrolelink {
+        &:extend(.imgshow);
+    }
+}
+
+.userselector select {
+    max-width: 100%;
+    border-radius: 3px;
+}
+#chooseuser {
+    padding: 10px;
+
+    form input[type="text"] {
+        margin-right: 5px;
+        border-radius: 3px;
+    }
+}
+
+#userselector_options {
+    display: table;
+    width: 100%;
+    clear: both;
+}
+
+.logselecform {
+    .row.span12 {
+        margin-bottom: 10px;
+    }
+    select {
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+#outlinetable {
+    tbody tr {
+        .numviews {
+            &:extend(.text-left);
+        }
+    }
+}
+// to make the padding on /grade/report/overview/index page
+.page-context-header {
+    .pad;
+}
+#graded_users_selector .singleselect{
+    padding-top: 10px;
+}
+
+table.user-grade {
+   border-color: #ccc;
+}
+
+.reporttable {
+    .selectitems {
+        div.singleselect:first-child{
+            padding-bottom: 10px;
+        }
+    }
+}
+.path-grade-report-singleview .singleview_buttons{
+    padding: 0px;
+    input{
+        &:extend(.btn, .btn-primary);
+    }
+}
+
+.path-grade-report-user .user-grade {
+    border-color: #ccc;
+}
+
+.form-horizontal .form-group, .mform .fitem, .form-item {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.questionbankwindow {
+    .choosecategory {
+        .pad;
+    }
+}

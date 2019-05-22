@@ -1,0 +1,83 @@
+{{!
+   This file is part of Totara LMS
+
+   Copyright (C) 2016 onwards Totara Learning Solutions LTD
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See  the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template core/single_button
+
+    Create a single form button.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * class string The css class.
+    * formattributes array Data containing the <form> attributes.
+    * inputitems array Data containing the input fields and their attributes.
+
+    Example context (json):
+    {
+        "class":"singlebutton",
+        "formattributes":[
+            {
+                "name":"method",
+                "value":"get"
+            },{
+                "name":"action",
+                "value":"edit.php"
+            }
+        ],
+        "inputitems":[
+            {
+                "attributes":[
+                    {
+                        "name":"type",
+                        "value":"submit"
+                    },{
+                        "name":"value",
+                        "value":"Create Course"
+                    }
+                ]
+            },{
+                "attributes":[
+                    {
+                        "name":"type",
+                        "value":"hidden"
+                    },{
+                        "name":"name",
+                        "value":"category"
+                    },{
+                        "name":"value",
+                        "value":"1"
+                    }
+                ]
+            }
+        ]
+    }
+}}
+<div class="{{class}}">
+    <form{{#formattributes}} {{name}}="{{value}}"{{/formattributes}}>
+        <div>
+            {{#inputitems}}
+            <input{{#attributes}} {{name}}="{{value}}"{{/attributes}} />
+            {{/inputitems}}
+        </div>
+    </form>
+</div>

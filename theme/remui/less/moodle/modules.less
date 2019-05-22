@@ -1,0 +1,485 @@
+/* modules.less */
+
+// The home for small tweaks to modules that don't require
+// changes drastic enough to pull in the full module css
+// and replace it completely
+// Plus some misc. odds and ends
+
+select {
+    width: auto;
+}
+
+// Forum
+
+.path-mod-forum .forumheaderlist {
+
+    color: #444;
+    border: 1px solid #ddd;
+
+    thead {
+        tr {
+            height: 3em;
+        }
+    }
+
+    thead .header {
+        padding: 10px!important;
+        border: none;
+        a {
+            color: #333;
+        }
+    }
+
+    .discussion {
+        .replies {
+            text-align: left;
+        }
+        .topic, .topic.starter, .picture, .author, .replies, .lastpost {
+            padding: 10px!important;
+            text-align: left;
+            border: 0;
+            border-top: 1px solid #ddd!important;
+        }
+    }
+
+    td.discussionsubscription {
+        border-left: 0!important;
+        border-top: 1px solid #ddd!important;
+    }
+}
+
+.path-mod-feedback .feedback_bar_image { // MDL-46063
+    height: 5px; // we should remove the bar height specification in core
+}
+
+.forumpost {
+    &:extend(.panel);
+    &:extend(.panel-default);
+    padding: 6px;
+    .header {
+        margin-bottom: 3px;
+    }
+    .maincontent {
+        .left {
+            padding: 0 10px 0 10px;
+        }
+        .content {
+            min-height: 100%;
+        }
+    }
+}
+
+.forumpost .row .left {
+    width: auto;
+}
+
+.forumpost .options .commands {
+    margin-bottom: 10px;
+    text-align: left;
+    > a:nth-child(1){
+       &:extend(.btn, .btn-default, .btn-xs);
+       font-size: 90%;
+   }
+   > a:nth-child(2){
+       &:extend(.btn, .btn-default, .btn-xs);
+       font-size: 90%;
+   }
+   > a:nth-child(3){
+       &:extend(.btn, .btn-default, .btn-xs);
+       font-size: 90%;
+   }
+   > a:nth-child(4){
+       &:extend(.btn, .btn-default, .btn-xs);
+       font-size: 90%;
+   }
+   > a:nth-child(5){
+       &:extend(.btn, .btn-default, .btn-xs);
+       font-size: 90%;
+   }
+   > a:nth-child(6){
+       &:extend(.btn, .btn-default, .btn-xs);
+       font-size: 90%;
+   }
+}
+
+.forumpost .subject {
+    font-weight: bold;
+}
+
+// Override hardcoded forum modules styling
+.forumsearch {
+
+    .form {
+        display: block;
+    }
+
+    #search{
+        width: 200px;
+    }
+
+    #searchforums{
+        margin: 10px;
+        float: right;
+    }
+    a{
+        margin: 0 6px;
+    }
+}
+
+#page-mod-forum-discuss .discussioncontrol.displaymode {
+    text-align: left;
+}
+
+#page-mod-forum-discuss .discussioncontrols .discussioncontrol {
+   .singleselect {
+    width: 100%;
+    select.singleselect {
+        .form-control;
+    }
+}
+
+&.movediscussion {
+    select.urlselect {
+        .form-control;
+        width: auto;
+        float: left;
+        margin-right: 15px;
+    }
+    input[type="submit"] {
+        float: left;
+    }
+    &.movediscussion {
+        float: left;
+    }
+}
+}
+
+#page-mod-forum-discuss .discussioncontrols .discussioncontrol.nullcontrol {
+    width: auto !important;
+}
+
+
+#page-footer {
+    margin-top: 1em;
+    padding: 1em 0;
+    border-top: 2px solid @table-border-color;
+}
+
+
+.path-grade-report-grader h1 {
+    text-align: inherit;
+}
+
+#page-mod-chat-gui_basic input#message {
+    max-width: 100%;
+}
+
+#page-mod-data-view #singleimage {
+    width: auto;
+}
+
+.path-mod-data form {
+    margin-top: 10px;
+}
+
+.path-mod-data table.mod-data-default-template {
+    th, td {
+        padding: 5px;
+    }
+}
+
+.template_heading {
+    margin-top: 10px;
+}
+
+.breadcrumb-button {
+    float: right;
+    margin-top: 4px;
+}
+
+.navbar-inverse .logininfo a {
+    color: @navbar-inverse-link-color;
+}
+.navbar-inverse .logininfo a:hover {
+    background-color: @navbar-inverse-link-hover-bg; // "transparent" is default to differentiate :hover/:focus from .active
+    color: @navbar-inverse-link-hover-color;
+}
+
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+    z-index: 4030;
+}
+@media (max-width: @grid-float-breakpoint) {
+    .navbar-collapse.collapse,
+    .navbar-collapse.collapsing {
+        margin-top: @navbar-height;
+        .nav {
+            float: none !important;
+        }
+    }
+}
+.langmenu form {
+    margin: 0;
+}
+.container-fluid {
+    max-width: 1680px;
+    margin: 0 auto;
+}
+// contributed by Paul Hibbitts, see http://msdn.microsoft.com/en-us/library/ie/jj583807(v=vs.85).aspx
+canvas {
+    -ms-touch-action: auto;
+}
+
+div#dock {
+    display: none;
+}
+
+// Choice.
+.path-mod-choice {
+    .horizontal  .choices {
+        margin: 0;
+        .option {
+            display: inline-block;
+            padding: 10px;
+        }
+    }
+    .results .data {
+        white-space: normal;
+    }
+}
+
+// Lesson.
+.path-mod-lesson .firstpageoptions {
+    margin: auto;
+    min-width: 280px;
+    width: 60%;
+}
+
+.path-mod-lesson .centerpadded {
+    padding: 5px;
+    text-align: center;
+}
+
+// Wiki
+.path-mod-wiki .wiki_headingtitle,
+.path-mod-wiki .midpad,
+.path-mod-wiki .wiki_headingtime {
+    text-align: inherit;
+}
+
+.path-mod-wiki .wiki_contentbox {
+    width: 100%;
+}
+
+// Quiz.
+.path-mod-quiz {
+    .questioncontainer {
+        input[type="text"] {
+            height: 1.5em;
+        }
+    }
+}
+
+// Survey module
+.path-mod-survey {
+    .surveytable {
+        .r1 {background-color: @table-bg-accent}
+        .rblock label {text-align: center;}
+    }
+    .resultgraph, .reportsummary, .studentreport, .reportbuttons, .centerpara {
+        text-align:center;
+    }
+}
+
+// Blog archive page customization
+.addbloglink {
+    a {
+        .btn;
+        .btn-default;
+    }
+}
+// Removeing the subscribe image and making link, look alike button.
+.path-mod-forum .discussionsubscription {
+    > a {
+        .btn;
+        .btn-default;
+        > img{
+         -webkit-filter: brightness(0);
+         filter: brightness(0);
+     }
+ }
+}
+
+#newdiscussionform {
+    text-align: right;
+    input[type="submit"]{
+        .btn-primary;
+    }
+}
+
+// data in grader report surpassing the width of table
+.path-grade-report-grader .gradeparent .cell {
+    white-space: normal;
+}
+
+/* Moodle theme Settings page Start */
+
+// Home Page Settings.
+
+#page-admin-setting-theme_remui_home_page {
+    .settingsform fieldset .form-item {
+        background: #f5f5f5;
+        margin: 0;
+        padding: 10px;
+
+        &#admin-frontpageblocksection2, &#admin-frontpageblocksection3, &#admin-frontpageblocksection4,  {
+            margin-top: 20px;
+        }
+        &:last-child {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+// Slider Settings.
+#page-admin-setting-theme_remui_frontpage {
+    .settingsform fieldset .form-item {
+        background: #f5f5f5;
+        margin: 0;
+        padding: 10px;
+        &#admin-slideimage1, &#admin-slideimage2, &#admin-slideimage3, &#admin-slideimage4, &#admin-slideimage5 {
+            margin-top: 20px;
+        }
+        &:last-child {
+            margin-bottom: 20px;
+        }
+
+    }
+
+}
+
+// Dashboard Settings.
+#page-admin-setting-theme_remui_dashboard {
+    .settingsform fieldset .form-item {
+        background: #f5f5f5;
+        margin: 0;
+        padding: 10px;
+        &:last-child {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+// General Settings.
+#page-admin-setting-theme_remui_general {
+    .settingsform fieldset .form-item {
+        background: #f5f5f5;
+        margin: 0;
+        padding: 10px;
+        &:last-child {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+// Login Settings.
+#page-admin-setting-theme_remui_login {
+    .settingsform fieldset .form-item {
+        background: #f5f5f5;
+        margin: 0;
+        padding: 10px;
+        &:last-child {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+// Footer Settings.
+#page-admin-setting-theme_remui_footersetting {
+    .settingsform fieldset .form-item {
+        background: #f5f5f5;
+        margin: 0;
+        padding: 10px;
+        &:last-child {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+
+/* Moodle theme Settings page End */
+
+/* Alignment changes on the admin/user page */
+#page-admin-user, #page-admin-user-user_bulk {
+    div#fgroup_id_realname_grp {
+        margin-bottom: 0;
+    }
+    div.fitemtitle {
+        line-height: 30px !important;
+    }
+    .felement.fgroup{
+        span:first-child {
+            margin-left: 20px;
+        }
+        span:last-of-type {
+            margin-left: 9px;
+        }
+        }
+        .felement.fselect {
+            margin-bottom: 20px;
+        }
+        select#id_firstaccess_sdt_day, select#id_lastaccess_sdt_day, select#id_timemodified_sdt_day {
+            margin-bottom: 20px;
+        }
+    }
+
+    #id_lastaccess_edt_enabled, #id_lastaccess_sdt_enabled, #id_firstaccess_edt_enabled, #id_firstaccess_sdt_enabled, #id_timemodified_sdt_enabled, #id_timemodified_edt_enabled {
+        vertical-align: middle;
+    }
+
+    .subscription {
+        .helplink{
+            a{
+                .btn;
+                .btn-primary;
+                .btn-flat;
+            }
+            margin-bottom: 10px;
+        }
+    }
+
+    .singlebutton div input[type='submit'] {
+        margin-top: 10px;
+    }
+// admin role page
+#page-admin-roles-allow .content #region-main{
+    .generalbox {
+        padding: 15px 0 15px 0;
+    }
+}
+
+#page-mod-forum-discuss {
+    .controlscontainer .discussioncontrol.pindiscussion {
+        .singlebutton div input[type='submit']  {
+            margin: 0;
+        }
+    }
+}
+
+// External tools page alignment fixing
+#page-mod-lti-mod {
+    #fitem_id_showdescriptionlaunch, #fitem_id_securetoolurl, #fitem_id_launchcontainer, #fitem_id_resourcekey, #fitem_id_password, #fitem_id_instructorcustomparameters, #fitem_id_icon, #fitem_id_secureicon {
+        .felement {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+// Lesson page alignment fixing
+#page-mod-lesson-mod {
+    #fitem_id_mediafile, #fitem_id_ongoing, #fitem_id_slideshow, #fitem_id_feedback, #fitem_id_activitylink {
+        .felement {
+            margin-bottom: 15px;
+        }
+    }
+}

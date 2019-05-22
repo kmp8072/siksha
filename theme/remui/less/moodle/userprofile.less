@@ -1,0 +1,161 @@
+.userprofile {
+    .fullprofilelink {
+        text-align: center;
+        margin: 10px;
+    }
+    .description {
+        margin-bottom: 20px;
+    }
+
+    .profile_tree {
+        .content-columns(2);
+    }
+    .profile_tree section {
+        display: inline-block;
+        width: 100%;
+    }
+    .header-button-group {
+        .pull-right;
+        .btn {
+            .btn-default;
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+    dl.list {
+        .dl-horizontal;
+    }
+    dd, dt {
+        margin-left: 0px;
+    }
+    ul {
+        margin-left: 10px;
+    }
+    ul > li ul {
+        margin-left: 0;
+    }
+}
+#page-user-profile .node_category, .path-user .node_category {
+    li {
+        list-style-type: none;
+        &.contentnode {
+            list-style-type: none;
+        }
+    }
+}
+.path-user .node_category:first-child li span {
+    margin-bottom: 10px;
+    display: block;
+}
+.page-context-header {
+    overflow: hidden;
+    &:after {
+        clear: both;
+    }
+    .page-header-image {
+        display: table-cell;
+        vertical-align: top;
+        padding-right: 10px;
+    }
+    .page-header-headings {
+        display: table-cell;
+        vertical-align: bottom;
+        h1 {
+            margin: 0;
+        }
+    }
+}
+.core_message-messenger-sendmessage-content {
+    .message-send {
+        margin: 5px 5px 0 0;
+    }
+}
+
+
+/*custom by laksha*/
+
+.nav-tabs-custom {
+    .tab-content {
+        #badges {
+            .row {
+                margin: 0;
+            }
+        }
+        #common_courses {
+            .row {
+                margin: 0;
+                div.alert {
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+        }
+        #courses {
+            .row {
+                margin: 0;
+                p {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+#page-user-profile .form-horizontal .form-control {
+    color: #111;
+}
+
+.widget-user-2 #add-contacts-error {
+    margin-top: 0.3em;
+}
+
+.about-me .about-me-body {
+
+    div.user-about-me:first-child {
+        hr {
+            display: none;
+        }
+    }
+    div.user-about-me > hr {
+        margin: 10px 0;
+    }
+}
+
+#page-user-profile {
+     #common_courses , #courses {
+        .box-header {
+            padding: 0;
+            .view-notes span {
+            font-size: 90%;
+            }
+        }
+        div#course-info {
+            margin-top: 10px;
+        }
+
+        .progress {
+            margin: 10px 0 0 0;
+        }
+    }
+}
+
+.user-profile-courses, .user-profile-badges, .user-profile-common-courses{
+    background: #eee;
+    border: 0;
+    a {
+        line-height: 20px;
+        color: #444;
+        &:hover {
+            color: #777;
+        }
+    }
+}
+
+// Fixing ul margin alignment
+#page-user-profile {
+    .widget-user-2 ul.nav-stacked {
+        margin: 0;
+    }
+}

@@ -1,0 +1,76 @@
+/**
+ * For the dock and items on the dock
+ * see also css3.css for gradient
+ */
+
+.has_dock header {
+    padding-left: 25px;
+}
+
+.dir-rtl.has_dock header {
+    padding-right: 25px;
+    padding-left: 0;
+}
+
+#dock {
+    width: 30px;
+}
+#dock .dockeditem {
+    background: transparent;
+}
+
+#dock .dockedtitle {
+    border: 1px solid #DDD;
+    width: auto;
+    height: auto;
+}
+#dock .dockeditem .dockedtitle.activeitem {
+    background: #FFF;
+    border: 1px solid #DDD;
+}
+#dock .controls {
+    bottom: auto;
+    top: auto;
+    margin-top: 10px;
+}
+.dir-rtl #dock .controls img {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+/** For the panel the docked blocks are shown in */
+#dockeditempanel .dockeditempanel_content {
+    padding: 0;
+    border-color: #DDD;
+}
+#dockeditempanel .dockeditempanel_hd {
+    border-bottom-color: #DDD;
+    padding: 10px 10px 5px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+#dockeditempanel .dockeditempanel_hd h2 {
+    font-size:110%;
+    margin: 0 5px;
+    color: #444444;
+    text-transform: none;
+}
+#dockeditempanel .dockeditempanel_hd .commands {
+    float: right;
+    margin-top: -20px;
+}
+.dir-rtl #dockeditempanel .dockeditempanel_hd .commands {
+    float: left;
+}
+
+#dockeditempanel .dockeditempanel_bd>* {
+    margin: 0;
+    padding: 0.5em;
+    background-color: #ffffff;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}

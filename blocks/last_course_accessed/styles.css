@@ -1,0 +1,24 @@
+.block_last_course_accessed_content {
+    padding: 20px;
+}
+
+.block_last_course_accessed_content p {
+    text-align: center;
+    margin: 0;
+}
+
+.block_last_course_accessed_content p.course_name_large {
+    font-size: 1.7em;
+}
+
+.block_last_course_accessed_content p.course_name_medium {
+    font-size: 1.4em;
+}
+
+.block_last_course_accessed_content p.progress_bar {
+    height: 10px;
+}
+
+.block_last_course_accessed_content p.progress_bar a {
+    display: inline-block;
+}

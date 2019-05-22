@@ -1,0 +1,199 @@
+@padding-large-horizontal: 16px;
+@padding-large-vertical: 10px;
+@border-radius-base: 4px;
+@nav-tabs-border-color: #dddddd;
+@nav-tabs-active-link-hover-border-color: #dddddd;
+
+#page {
+    margin-top: 2em;
+}
+
+#totaramenu-legacy-wrap {
+    height: 0;
+}
+
+#totaramenu-legacy {
+    clear:both;
+    width:100%;
+    margin: 0;
+    padding: 0;
+    z-index:1;
+
+    ul  {
+        padding:0;
+        margin:0;
+
+        li {
+            float:left;
+            font-size:1em;
+            font-weight:bold;
+            text-transform:uppercase;
+            margin:0 1px 0 0;
+            list-style-type:none;
+            border:none;
+
+            &:hover ul {
+                display:block
+            }
+
+            a {
+                display:block;
+                padding:8px 35px 7px;
+                color: #888;
+                border: 1px solid #DDD;
+                border-bottom: 0px;
+                background: #FFF;
+
+                &:hover {
+                    color: #333;
+                    background: #F9F9F9;
+                    text-decoration: none;
+                }
+            }
+
+            &.selected {
+                a {
+                    background: #FFF;
+                    color: #333;
+                }
+                li a {
+                    color: #888;
+                    background: #FFF;
+                    border: none;
+                    border-bottom: 1px solid #DDD;
+
+                    &:hover {
+                        color: #333;
+                        background: #F9F9F9;
+                    }
+                }
+                li.selected a {
+                    color: #333;
+                    background: #FFF;
+                    cursor: default;
+                }
+            }
+        }
+
+        ul {
+            display:none;
+            width:auto;
+            min-width:200px;
+            position:absolute;
+            z-index:100;
+            margin: 0 0 0 1px;
+            border-top: 1px solid #DDD;
+
+            li {
+                font-size:0.8em;
+                float:none;
+                margin:0;
+
+                a {
+                    padding:5px 35px;
+                    display: block;
+                    border: none;
+                    border-bottom: 1px solid #DDD;
+                    color: #888;
+                    background: #FFF;
+
+                    &:hover {
+                        color: #333;
+                        background: #F9F9F9;
+                    }
+                }
+            }
+        }
+    }
+
+}
+.dir-rtl #totaramenu ul {
+    li {
+        float: right;
+        margin: 0 0 0 1px;
+    }
+    ul li {
+        float: none;
+    }
+}
+
+.ie8 #totaramenu ul ul {
+    border: 1px solid #ddd;
+}
+
+.ie #totaramenu ul ul {
+    border-left: 1px solid #ddd;
+}
+
+@media screen and (max-width:979px) {
+    #totaramenu ul li,
+    .dir-rtl #totaramenu ul li {
+        float: none;
+    }
+
+    #totaramenu > ul > li.last > a {
+        border-bottom: 1px solid #DDD;
+    }
+
+    #totaramenu ul ul {
+        display: block;
+        position: static;
+        margin: 0;
+    }
+
+    #totaramenu ul ul li a {
+        padding:5px 35px 5px 45px;
+    }
+
+    #totaramenu ul li li a {
+        border-left: 1px solid #DDD;
+        border-right: 1px solid #DDD;
+    }
+
+    #totaramenu ul li li.last a {
+        border-bottom: none;
+    }
+}
+
+/**
+ * Vertical tabs.
+ *
+ * This is an modification on top of the Bootstrap standard tabs.
+ */
+.verticaltabtree-wrapper {
+    margin-top: @padding-large-vertical * 3;
+
+    .verticaltabtree  {
+        float: left;
+        max-width: 20%;
+        margin: 0 @padding-large-horizontal * 2;
+
+        .tabtree {
+            margin: 0;
+        }
+
+        .nav.nav-tabs {
+            border-right: 1px solid @nav-tabs-border-color;
+            border-bottom: 0;
+
+            > li {
+                float: none;
+
+                a {
+                    border-radius: @border-radius-base 0 0 @border-radius-base;
+                    margin-right: -1px;
+                    word-wrap: break-word;
+                }
+            }
+
+            > li.active a {
+                border: 1px solid @nav-tabs-active-link-hover-border-color;
+                border-right-color: #fff;
+            }
+        }
+    }
+}
+
+#page-admin-elementlibrary-verticaltabs .tabtree {
+    margin-right: @padding-large-horizontal;
+}

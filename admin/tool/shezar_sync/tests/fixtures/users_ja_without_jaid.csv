@@ -1,0 +1,3 @@
+idnumber,username,email,firstname,lastname,password,timemodified,deleted,jobassignmentfullname,jobassignmentstartdate,jobassignmentenddate,orgidnumber,posidnumber,manageridnumber,appraiseridnumber
+id10,username10,e10@example.com,first10,last10,x,0,0,,,,,,,
+id11,username11,e11@example.com,first11,last11,x,0,0,,,,,,,

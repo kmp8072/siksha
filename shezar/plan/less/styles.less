@@ -1,0 +1,68 @@
+//
+// This file is part of Totara LMS
+//
+// Copyright (C) 2016 onwards Totara Learning Solutions LTD
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 3 of the License, oru
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// @copyright 2016 onwards Totara Learning Solutions LTD
+// @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+// @author    Joby Harding <joby.harding@totaralearning.com>
+// @author    Rob Tyler <rob.tyler@totaralearning.com>
+// @package   totara_plan
+
+@import "legacy.less";
+
+@padding-small-horizontal: 10px;
+@padding-small-vertical: 5px;
+
+.path-totara-plan {
+  .plan_box .userpicture {
+    margin: 0 @padding-small-horizontal 0 0;
+  }
+
+  .approvalform label,
+  .approvalform input[type="text"],
+  .approvalform input[type="text"] + input[type="submit"],
+  .plan_box .approvalform input[type="submit"] {
+    margin: 0 @padding-small-horizontal 0 0;
+  }
+}
+
+.path-admin-totara-plan {
+  #fgroup_id_radiogroup {
+    span {
+      display: block;
+    }
+
+    label {
+      display: inline-block;
+      font-weight: bold;
+      width: 95%;
+    }
+
+    input {
+      vertical-align: top;
+      margin-top: @padding-small-vertical / 3;
+      margin-right: @padding-small-horizontal / 2;
+    }
+
+    p {
+      font-weight: normal;
+      margin: 0;
+    }
+  }
+}
+
+

@@ -1,0 +1,8 @@
+.dir-rtl .block_shezar_certifications .name {
+    float: right;
+}
+
+.block_shezar_certifications ul {
+    list-style-type: none;
+    margin: 0;
+}

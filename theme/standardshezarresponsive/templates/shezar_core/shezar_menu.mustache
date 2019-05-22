@@ -1,0 +1,79 @@
+{{!
+   This file is part of shezar LMS
+
+   Copyright (C) 2015 onwards shezar Learning Solutions LTD
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See  the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template shezar_core/shezar_menu
+
+    Creates the shezar menu.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * menuitems Array The menu items
+
+    Example context (json):
+    {
+        "menuitems": [
+            {
+                "class_name": "Performance",
+                "class_isfirst": false,
+                "class_islast": false,
+                "class_isselected": true,
+                "linktext": "Performance",
+                "url": "http://example.com",
+                "target": "_self",
+                "haschildren": true,
+                "children": [
+                    {
+                        "class_name": "goals",
+                        "class_isfirst": true,
+                        "class_islast": false,
+                        "class_isselected": false,
+                        "linktext": "Goals",
+                        "url": "http://example.com",
+                        "target": "_self",
+                        "haschildren": false,
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}}
+<ul id="shezarmenu">
+    {{#menuitems}}<li class="menu-{{class_name}}{{#haschildren}} haschildren{{/haschildren}}{{#class_isfirst}} first{{/class_isfirst}}{{#class_islast}} last{{/class_islast}}{{#class_isselected}} selected{{/class_isselected}}">
+        <a target="{{target}}" href="{{url}}">{{{linktext}}}</a>
+        {{#haschildren}}
+            <ul>
+                {{#children}}<li class="menu-{{class_name}}{{#class_isfirst}} first{{/class_isfirst}}{{#class_islast}} last{{/class_islast}}{{#class_isselected}} selected{{/class_isselected}}">
+                    <a target="{{target}}" href="{{url}}">{{{linktext}}}</a>
+                </li>{{/children}}
+            </ul>
+        {{/haschildren}}
+    </li>{{/menuitems}}
+</ul>
+{{#js}}
+    require(['shezar_core/shezarmenu', 'core/log'], function(shezarMenu, logging) {
+    shezarMenu.setFocus('#shezarmenu');
+    logging.debug('shezar menu initialised');
+    });
+{{/js}}

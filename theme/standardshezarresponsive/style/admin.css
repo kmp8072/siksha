@@ -1,0 +1,84 @@
+/** Admin **/
+.path-admin .incompatibleblockstable td.c0 {
+    color: #ff3330;
+}
+#adminsettings fieldset {
+    color: #333;
+    background-color: #EEE;
+    border: 1px solid #BBB;
+    padding: 13px 6px;
+}
+
+#page-admin-shezar-program-manage .addcategory {padding: 10px;}
+#page-admin-shezar-program-manage .buttons {margin-bottom: 15px;}
+#page-admin-shezar-program-manage .editcourse {margin:20px auto;}
+#page-admin-shezar-program-manage .editcourse th,
+#page-admin-shezar-program-manage .editcourse td {padding-left:10px;padding-right:10px;}
+#page-admin-shezar-program-manage .editcourse .count {text-align:right;}
+#page-admin-shezar-program-manage.dir-rtl .editcourse td[align="left"] {text-align: right;}
+#page-admin-shezar-program-manage.dir-rtl .editcourse td[align="right"] {text-align: left;}
+
+#page-admin-shezar-program-manage .buttons {
+  display: inline;
+}
+
+#page-admin-index .box.generalbox.adminwarning,
+#page-admin-index .box.generalbox.admininfo  {
+    width:auto;
+}
+#page-admin-index .shezar-copyright,
+#page-admin-index .copyright-acknowledgements {
+    margin: auto;
+    text-align: center;
+    max-width: 600px;
+}
+
+.path-admin .buttons {
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    text-align: center;
+    width: 100%;
+}
+#notice .singlebutton {
+    padding: 3px 5px;
+}
+#notice .buttons .singlebutton input {
+    margin: 0;
+    white-space: normal;
+    padding: 4px 8px;
+}
+.path-admin .singlebutton div {
+    margin: 0;
+}
+
+#page-admin-course-manage #coursesearch {
+    clear: both;
+}
+
+.form-buttons {
+    background: transparent;
+    border: none;
+}
+
+.admin .generalbox {
+    border: 1px solid #BBBBBB;
+    background-color: #EEEEEE;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.admin table.generalbox {
+    padding: 0;
+}
+
+.list-assignedcompetencies,
+.list-assigned-goals {
+    clear: left;
+    padding-bottom: 40px;
+}
+
+.upgradekeyreq {
+    margin-top: 2em;
+}

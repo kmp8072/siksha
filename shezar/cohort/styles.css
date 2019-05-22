@@ -1,0 +1,18 @@
+/* to hide "this form contains required fields" inside the cohort rules dialogs */
+#cohortruleformdialog .required {
+    display: none;
+}
+select#id_listofvalues {
+    max-height: 300px;
+}
+.cohort-editing_ruleset {
+    margin: 0;
+}
+.cohort-editing_ruleset .cohort_rule_type {
+    display: inline-block;
+    width: 60px;
+    text-align: right;
+}
+.dir-rtl .cohort-editing_ruleset .cohort_rule_type {
+    text-align: left;
+}

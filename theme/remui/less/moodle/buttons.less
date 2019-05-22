@@ -1,0 +1,106 @@
+.singlebutton div {
+    margin: 0 5px 5px 5px;
+}
+
+// Two singlebutton's side by side for ok/cancel.
+#notice .buttons .singlebutton {
+    display: inline-block;
+}
+.continuebutton {
+    text-align: center;
+}
+
+.btn-lineup {
+    //margin: 0 5px 3px 0;
+}
+
+input[name="searchwikicontent"] + input[type="submit"],
+select + input[type="submit"],
+input[type="text"] + input[type="button"],
+input[type="password"] + input[type="submit"],
+input[type="text"] + button,
+input[type="text"] + input[type="submit"] {
+    .btn-lineup;
+    margin: 0 0 3px 5px;
+}
+p.arrow_button {
+    margin-top: 5em;
+    text-align: center;
+    #remove {
+        margin: 3em auto 5em;
+    }
+    input {
+        .btn-block;
+    }
+}
+#addcontrols {
+    margin-top: 5em;
+    text-align: center;
+    margin-bottom: 3em;
+}
+#addcontrols input,
+#removecontrols input {
+    .btn-block;
+}
+
+button,
+input.form-submit,
+input[type="button"],
+input[type="submit"],
+input[type="reset"]
+{
+    .btn;
+    .btn-default;
+    .btn-flat;
+    .btn-lineup;
+}
+
+input.form-submit,
+input#id_submitbutton,
+input#id_submitbutton2,
+.path-admin .buttons input[type="submit"],
+td.submit input {
+    .btn;
+    .btn-primary;
+    .btn-flat;
+}
+
+// override .btn-primary
+#notice .singlebutton + .singlebutton input,
+.submit.buttons input[name="cancel"] {
+    .btn;
+    .btn-default !important;
+    .btn-flat;
+}
+
+#notice .singlebutton + .singlebutton input,
+.submit.buttons input[name="cancel"] {
+    .btn;
+    .btn-lineup;
+    .btn-flat;
+}
+
+input[id$="_clearbutton"],
+input[type="reset"] {
+    .btn;
+    .btn-warning;
+    .btn-flat;
+}
+
+button.yui3-button.closebutton,
+button.yui3-button.closebutton:hover {
+    background-position: 0 0;
+}
+
+input.fp-btn-choose {
+    .btn;
+    .btn-sm;
+    .btn-flat;
+    margin-left: 0;
+    margin-top: 4px;
+}
+.user-enroller-panel .uep-search-results .user .options .enrol {
+    .btn;
+    .btn-xs;
+    .btn-flat;
+}

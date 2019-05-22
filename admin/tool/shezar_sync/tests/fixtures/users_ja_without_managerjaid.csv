@@ -1,0 +1,22 @@
+idnumber,username,email,firstname,lastname,password,timemodified,deleted,jobassignmentidnumber,jobassignmentfullname,jobassignmentstartdate,jobassignmentenddate,orgidnumber,posidnumber,manageridnumber,appraiseridnumber
+appraiser1id,appraiser,appraiser@example.com,appraiser1,appraiser1,x,0,0,,,,,,,,
+manager1id,manager1,manager1@example.com,manager1,manager1,x,0,0,,,,,,,,
+manager2id,manager2,manager2@example.com,manager2,manager2,x,0,0,manager2jaid1,full2,,,,,,
+id10,username10,e10@example.com,first10,last10,x,0,0,,,,,,,,
+id11,username11,e11@example.com,first11,last11,x,0,0,,,,,,,,
+id12,username12,e12@example.com,first12,last12,x,0,0,onlyjaid,,,,,,,
+id13,username13,e13@example.com,first13,last13,x,0,0,newjaid,,,,,,,
+id14,username14,e14@example.com,first14,last14,x,0,0,matchingjaid,,,,,,,
+id15,username15,e15@example.com,first15,last15,x,0,0,,no jaid no existing,1460692800,1463284800,org1,pos1,manager3,appraiser1id
+id16,username16,e16@example.com,first16,last16,x,0,0,,no jaid with existing,1460692800,1463284800,org1,pos1,manager3,appraiser1id
+id17,username17,e17@example.com,first17,last17,x,0,0,newjaid,good data,1460692800,1463284800,org1,pos1,manager3,appraiser1id
+id18,username18,e18@example.com,first18,last18,x,0,0,matchingjaid,good data,1460692800,1463284800,org1,pos1,manager2id,appraiser1id
+id19,username19,e19@example.com,first19,last19,x,0,0,newjaid,bad data,1460692800,1463284800,org2,pos2,managerxyz,appraiseridx
+id20,username20,e20@example.com,first20,last20,x,0,0,matchingjaid,bad data,1460692800,1463284800,org2,pos2,managerxyz,appraiseridx
+id21,username21,e21@example.com,first21,last21,x,0,0,jaid,manager id only manager has no assignment,,,,,manager1id,
+id22,username22,e22@example.com,first22,last22,x,0,0,jaid,manager id only manager has existing assignment,,,,,manager2id,
+id23,username23,e23@example.com,first23,last23,x,0,0,,,,,,,manager1id,
+id24,username24,e24@example.com,first24,last24,x,0,0,,,,,,,manager2id,
+id26,username26,e26@example.com,first26,last26,x,0,0,jaid1,multiple import #1 for one user,1460692800,1463284800,org1,pos1,manager3,appraiser1id
+id26,username26,e26@example.com,first26,last26,x,0,0,jaid2,multiple import #2 for one user,1460692800,1463284800,orgx,posx,managerx,appraiserx
+id27,username27,e27@example.com,first27,last27,x,0,0,jaidy,match second jaid,1460692800,1463284800,org1,pos1,manager3,appraiser1id

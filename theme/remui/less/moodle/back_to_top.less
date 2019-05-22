@@ -1,0 +1,32 @@
+/* @group Back to Top */
+@white: #FFFFFF;
+.remui-back-to-top [class^="icon-"] {
+  font-size: 3em;
+}
+
+.remui-back-to-top {
+  position: fixed;
+  z-index: 4000;
+  bottom: 0.5%;
+  right: 15px;
+  text-align: center;
+  font-size: 9px;
+  width: 35px;
+  height: 35px;
+  transition: all .3s ease 0s;
+  background-color: whitesmoke;
+  box-shadow: 0 0px 5px rgba(68, 68, 68, 0.64);
+  color: #000000;
+  line-height: 35px;
+  display: none;
+  
+  &:hover {
+    text-decoration: none;
+    border-radius: 3px;
+  }
+
+  & a, & a:visited {
+    color: @white !important;
+  }
+}
+/* @end */

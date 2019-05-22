@@ -1,0 +1,9 @@
+.dir-rtl .block_shezar_dashboard ul,
+.block_shezar_dashboard ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+.block_shezar_dashboard .active {
+    font-weight: bold;
+}

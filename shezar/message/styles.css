@@ -1,0 +1,28 @@
+#shezar-msgs-dismiss dt,
+#shezar-msgs-dismiss label {
+    width: 15%;
+    display: inline-block;
+    min-width: 70px;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+#shezar-msgs-dismiss dd,
+#shezar-msgs-dismiss input {
+    width: 80%;
+    display: inline-block;
+}
+
+#shezar-msgs-dismiss dd,
+#shezar-msgs-dismiss input,
+#shezar-msgs-dismiss dt,
+#shezar-msgs-dismiss label {
+    padding-top: 10px;
+}
+
+#shezar_message_actions input[type=submit] {
+    display: none;
+}
+.jsenabled #shezar_message_actions input[type=submit] {
+    display: inline-block;
+}

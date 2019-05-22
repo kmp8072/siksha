@@ -1,0 +1,10 @@
+{
+    "name": "moodle-shezar_reportbuilder-graphicalreporting",
+    "builds": {
+        "moodle-shezar_reportbuilder-graphicalreporting": {
+            "jsfiles": [
+                "graphicalreporting.js"
+            ]
+        }
+    }
+}

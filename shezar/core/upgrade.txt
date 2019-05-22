@@ -1,0 +1,13 @@
+List of upgrade and API changes in shezar core
+
+
+=== 2.7 ===
+
+* \shezar_core\event\user_firstlogin was removed, use standard \core\event\user_loggedin
+  event instead, in case of first login $USER->firstaccess and $USER->currentlogin are equal.
+
+* \shezar_core\event\user_enrolment was removed, use standard \core\event\user_enrolment_created
+  event instead
+
+* MDL-48282 was backported. Do not update user->firstaccess from any auth plugin,
+  the complete_user_login() does it automatically.

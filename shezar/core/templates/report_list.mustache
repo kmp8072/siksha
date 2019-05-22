@@ -1,0 +1,67 @@
+{{!
+   This file is part of shezar LMS
+
+   Copyright (C) 2015 onwards shezar Learning Solutions LTD
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See  the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+
+    @template shezar_core/report_list
+
+    Report List.
+
+    This template generates a simple list of available report builder reports with an edit link if appropriate.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * report_list A array of reports that is required information to generate the list.
+
+    Example context (json):
+    {
+        "report_list":  [
+                            {
+                                "name":"My Objectives",
+                                "href": "http://example.com",
+                                "edit_href": "http://example.com"
+                            },
+                            {
+                                "name":"My Users",
+                                "href": "http://example.com",
+                                "edit_href": "http://example.com"
+                            }
+                        ]
+    }
+}}
+<ul class="reportmanager">
+{{#report_list}}
+    <li>
+        <a href="{{href}}" title="{{name}}">
+            {{#pix}}report_icon,shezar_reportbuilder,{{name}}{{/pix}}
+            {{name}}
+        </a>
+        {{#edit_href}}
+            &nbsp;
+            <a href="{{edit_href}}" title="{{name}}">
+                {{#pix}}t/edit,moodle,{{name}}{{/pix}}
+            </a>
+        {{/edit_href}}
+    </li>
+{{/report_list}}
+</ul>

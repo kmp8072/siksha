@@ -1,0 +1,84 @@
+
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="GodrejPushNotification">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>TVS PUSH NOTIFICATION CENTER</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script><!-- load angular -->
+	<script type="text/javascript">
+		var app = angular.module('GodrejPushNotification', []);
+  		app.controller('mainController', function($scope,$q,$http) {
+  			$scope.send = function(message,title) {
+  				console.log(message);
+  				console.log(title);
+  				var data = {
+				  "notification": {
+				    "title": title,
+				    "body": message,
+					"sound":"default"
+				  },
+				  "data" : {
+				  	"title": title,
+				  	"message": message
+				  },
+				  "to" : "/topics/tvsall"
+	            };
+  				$http({
+		            method: 'post',
+		            url: 'https://fcm.googleapis.com/fcm/send',
+		            data: data,
+		            headers: {
+		                'Content-Type': 'application/json',
+						'Authorization': 'key=AAAAnK1uKQE:APA91bFci9UuTjgzfSZAp1Xniz1NiPjN2Fx10iFFoQruC62NG3jgQhpQ4T3vMDVhvrXy9HfKdI1etFgcxqPNErJkI9nGOpDyUshpGDhlt2hl1TcNLp6M2kuP2ED4Ys9_S8Wnh3_-I6QX'
+		            }
+			    })
+				.success(function (data) {
+					console.log(data);
+					$scope.title = '';
+					$scope.message = '';
+					alert('MESSAGE SEND SUCCESSFULLY');
+		        })
+		        .error(function (data, status) {
+					console.log(data);
+		        	$scope.title = '';
+					$scope.message = '';
+		        	alert('ERRORR SENDING MESSAGE');
+		        });
+  			}	
+  		});	
+	</script>
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+	<div class="container">
+		<h2>TVS PUSH NOTIFICATION</h2>
+		<div class="form-group">
+			<label for="usr">Title:</label>
+			<input type="text" class="form-control" id="usr" ng-model="title">
+		  </div>
+		<div class="form-group">
+			<label for="comment">Message:</label>
+			<textarea class="form-control" rows="5" id="comment" ng-model="message"></textarea>
+		  </div>
+		  <button type="button" class="btn btn-primary" ng-click="send(message,title);">Send Message</button>
+	</div>
+
+</body>
+</html>

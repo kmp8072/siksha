@@ -1,0 +1,125 @@
+//
+// This file is part of Totara LMS
+//
+// Copyright (C) 2016 onwards Totara Learning Solutions LTD
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// @copyright 2016 onwards Totara Learning Solutions LTD
+// @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+// @author    Rob Tyler <rob.tyler@totaralearning.com>
+// @package   totara_reportbuilder
+
+@import "legacy.less";
+
+@padding-small-horizontal: 10px;
+@padding-large-horizontal: 16px;
+@padding-small-vertical: 5px;
+@font-size-base: 14px;
+@font-size-small: ceil((@font-size-base * 0.85)); // ~12px
+
+@padding-small-horizontal:  10px;
+@line-height-computed: 20px;
+@padding-small-horizontal: 5px;
+
+.rb-search .mform {
+  .mform .fitem .felement label {
+    margin-left: @padding-small-horizontal;
+    margin-right: @padding-small-horizontal;
+  }
+
+  .mform .fgroup .felement .fdate_time_selector select {
+    width: auto;
+  }
+
+  // IDs are not desirable in style selectors.
+  // These are based on legacy styles.
+  #fitem_id_toolbarsearchtext label {
+    white-space: nowrap;
+  }
+
+  #fitem_id_toolbarsearchtext,
+  #fitem_id_toolbarsearchbutton,
+  #fitem_id_cleartoolbarsearchtext
+  #fitem_id_toolbarsearchtext .felement,
+  #fitem_id_toolbarsearchbutton .felement,
+  #fitem_id_cleartoolbarsearchtext .felement {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.rb-sidebar {
+  margin: 0;
+
+  .fcontainer .fitem .fitemtitle,
+  .fcontainer .fitem .fgroup legend {
+    width: 100%;
+    margin-bottom: @padding-small-vertical;
+  }
+
+  .fcontainer .fitem .felement select,
+  .fcontainer .fitem .felement input[type="text"] {
+     padding: 0;
+  }
+
+  .fdate_time_selector a {
+    vertical-align: -@padding-small-vertical;
+    margin-left: -@padding-large-horizontal;
+  }
+
+  input[type='text'] {
+    margin-right: @padding-small-horizontal;
+  }
+}
+
+.totara-table-container {
+  border: none;
+}
+
+#rb_export_form {
+  clear: both;
+}
+
+// Centre the export form.
+#fgroup_id_exportgroup {
+  text-align: center;
+
+  fieldset {
+    width: auto;
+    display: inline-block;
+
+    .felement {
+      width: auto;
+      float: left;
+      margin: 0;
+    }
+
+    legend {
+      float: left;
+      width: auto;
+      line-height: @line-height-computed * 1.5;
+      margin-right: @padding-small-horizontal;
+
+      span {
+        width: auto;
+      }
+    }
+  }
+}
+
+.mform .fgroup .felement .rb-multicheck-control {
+  display: block;
+  margin-bottom: 5px;
+}

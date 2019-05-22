@@ -1,0 +1,54 @@
+HEAD  -  
+
+1.05  -  Added option for using width and height as maximum
+         size in responsive mode.
+
+         Updated video.js from version 4.2.2+ to 4.6.3+
+         (#8a05aa11a13eeccffaff39d5579214c908b8aa13).
+
+1.04  -  Now 2.4 compatible.
+
+1.03  -  Updated video.js from version 4.2.1 to 4.2.2+
+         (#9bfbceb04729f8fb3c250d9bb0bf072453facb82).
+
+1.02  -  Added missing capability strings.
+
+         URLs are now generated correctly if addslashes is disabled.
+
+1.01  -  Browsers still serving old videojs resources because the
+         url remained the same. Fixed it by changing the url.
+
+         Videojs javascript should be in the html head.
+
+1.00  -  Set version to stable.
+
+         Centered player horizontally in window.
+
+         CSS workaround for Videojs "Sorry, no compatible source and
+         playback technology..." message not showing properly.
+
+0.31  -  Updated video.js to version 4.2.1.
+
+         Added alternative viewing links underneath player in case
+         video isn't playing properly.
+
+         Added a responsive mode setting where videos are
+         automatically resized with the browser window size (width
+         and height fields are used to define the video
+         proportions).
+
+0.30  -  Backups now working. Previous version caused problems
+         with site backups so please upgrade to this version
+         if you're running an older version!
+
+0.24  -  Renamed Github repository to follow the Moodle naming
+         convention of "moodle-{type}_{name}", i.e.
+         "moodle-mod_videofile".
+
+0.23  -  Modified code and comments based on feedback from the Moodle
+         Code Checker, which checks code against some aspects of the
+         Moodle coding guidelines. Passes cleanly using the following
+         settings (excludes third party video.js library):
+
+             Path to check: mod/videofile
+             Exclude: video-js

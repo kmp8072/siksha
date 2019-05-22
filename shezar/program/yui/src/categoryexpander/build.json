@@ -1,0 +1,10 @@
+{
+  "name": "moodle-shezar_program-categoryexpander",
+  "builds": {
+    "moodle-shezar_program-categoryexpander": {
+      "jsfiles": [
+        "categoryexpander.js"
+      ]
+    }
+  }
+}

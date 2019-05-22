@@ -1,0 +1,23 @@
+[27-Jan-2016 04:22:28 America/Denver] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+SELECT * FROM mdl_user where id=
+[array (
+)]
+Error code: dmlreadexception
+* line 443 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1080 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1480 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 467 of /local/dashboardplugin/lib.php: call to moodle_database->get_record_sql()
+* line 90 of /local/dashboardplugin/dashboard.php: call to local_dashboardplugin_getteacher()
+
+[27-Jan-2016 04:28:42 America/Denver] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+SELECT * FROM mdl_user where id=
+[array (
+)]
+Error code: dmlreadexception
+* line 443 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1080 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1480 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 467 of /local/dashboardplugin/lib.php: call to moodle_database->get_record_sql()
+* line 90 of /local/dashboardplugin/dashboard.php: call to local_dashboardplugin_getteacher()
+
+[27-Jan-2017 13:05:09 Europe/London] PHP Notice:  Undefined variable: data in /home/shezartc/public_html/secureyes/local/scormreport/ajax.php on line 10

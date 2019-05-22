@@ -1,0 +1,104 @@
+.treeview, .treeview ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.treeview ul {
+    background-color: white;
+}
+
+.treeview .hitarea {
+    background-image: url([[pix:totara_core|jquery_treeview/treeview-default]]);
+    background-repeat: no-repeat;
+    background-position: -64px -24px;
+    height: 16px;
+    width: 16px;
+    margin-left: -16px;
+    float: left;
+    cursor: pointer;
+}
+
+.treeview li {
+    margin: 0;
+    padding: 0 0 0 16px;
+    font-size: @font-size-small;
+}
+
+.treeview a.selected {
+    background-color: #eee;
+}
+
+#treecontrol { margin: 1em 0; display: none; }
+
+.treeview li {
+    background-image: url([[pix:totara_core|jquery_treeview/treeview-default-line]]);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.treeview li.collapsable, .treeview li.expandable { background-position: 0 -176px; }
+
+.treeview .expandable-hitarea { background-position: -80px -2px; }
+
+.treeview li.last { background-position: 0 -1766px }
+.treeview li.lastCollapsable, .treeview li.lastExpandable { background-image: url([[pix:totara_core|jquery_treeview/treeview-default]]); }
+.treeview li.lastCollapsable { background-position: 0 -111px }
+.treeview li.lastExpandable { background-position: -32px -67px }
+
+.treeview div.lastCollapsable-hitarea, .treeview div.lastExpandable-hitarea { background-position: 0; }
+
+.treeview-red li { background-image: url([[pix:totara_core|jquery_treeview/treeview-red-line]]); }
+.treeview-red .hitarea, .treeview-red li.lastCollapsable, .treeview-red li.lastExpandable { background-image: url([[pix:totara_core|jquery_treeview/treeview-red]]); }
+
+.treeview-black li { background-image: url([[pix:totara_core|jquery_treeview/treeview-black-line]]); }
+.treeview-black .hitarea, .treeview-black li.lastCollapsable, .treeview-black li.lastExpandable { background-image: url([[pix:totara_core|jquery_treeview/treeview-black]]); }
+
+.treeview-gray li { background-image: url([[pix:totara_core|jquery_treeview/treeview-gray-line]]); }
+.treeview-gray .hitarea, .treeview-gray li.lastCollapsable, .treeview-gray li.lastExpandable { background-image: url([[pix:totara_core|jquery_treeview/treeview-gray]]); }
+
+.treeview-famfamfam li { background-image: url([[pix:totara_core|jquery_treeview/treeview-famfamfam-line]]); }
+.treeview-famfamfam .hitarea, .treeview-famfamfam li.lastCollapsable, .treeview-famfamfam li.lastExpandable { background-image: url([[pix:totara_core|jquery_treeview/treeview-famfamfam]]); }
+
+.filetree span.folder, .filetree span.file { padding: 0 0 0 16px; display: block; }
+.filetree span.folder {
+    background-image: url([[pix:totara_core|jquery_treeview/folder]]);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.filetree li.expandable span.folder {
+    background-image: url([[pix:totara_core|jquery_treeview/folder-closed]]);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.filetree span.file {
+    background: url([[pix:totara_core|jquery_treeview/file]]);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.treeview li.expandable .hitarea {
+    background-position: 100% -2px;
+}
+
+.treeview div.lastExpandable-hitarea.hitarea {
+    background-position: 0;
+}
+
+//
+// RTL Dialogue Corrections
+//
+
+// Fix images for a basic tree using RTL.
+.dir-rtl .treeview li {
+    /*rtl:ignore*/
+    background-image: url([[pix:totara_core|jquery_treeview/treeview-default-line-rtl]]);
+}
+.dir-rtl .treeview .hitarea,
+.dir-rtl .treeview li.lastExpandable {
+    /*rtl:ignore*/
+    background-image: url([[pix:totara_core|jquery_treeview/treeview-default-rtl]]);
+}
+
+.dir-rtl .treeview li.collapsable .hitarea {
+    /*rtl:ignore*/
+    background-position: -16px -24px;
+}

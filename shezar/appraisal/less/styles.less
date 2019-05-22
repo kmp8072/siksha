@@ -1,0 +1,77 @@
+//
+// This file is part of Totara LMS
+//
+// Copyright (C) 2016 onwards Totara Learning Solutions LTD
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// @copyright 2016 onwards Totara Learning Solutions LTD
+// @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+// @author    Joby Harding <joby.harding@totaralearning.com>
+// @author    Rob Tyler <rob.tyler@totaralearning.com>
+// @package   totara_appraisal
+
+@import "legacy.less";
+
+@padding-small-horizontal: 10px;
+@padding-small-vertical: 5px;
+
+div.appraisal-content {
+    padding-left:1em;
+}
+
+div.appraisal-content .fitem.fitem_fgroup select {
+    display: inline-block;
+}
+
+div.appraisal-content .mform .fitem .felement {
+    padding: 0;
+}
+
+.appraisal-title {
+    float: none;
+}
+
+.appraisal-headerbuttons input[type="button"] {
+    margin-left: @padding-small-horizontal;
+}
+
+.appraisal-stage {
+    clear: both;
+}
+
+.path-totara-appraisal .fcontainer {
+    padding-left: @padding-small-horizontal * 3;
+
+    .fstaticlabel a {
+        margin-right: @padding-small-horizontal;
+    }
+
+    .felement.fstatic {
+        padding-top: @padding-small-vertical * 1.5;
+    }
+}
+
+#page-totara-appraisal-snapshot {
+    .collapsible-actions,
+    .visibleto,
+    .visibleto-review,
+    .skiplinks {
+        display: none;
+    }
+}
+
+.plan_box a {
+    text-decoration: none;
+}

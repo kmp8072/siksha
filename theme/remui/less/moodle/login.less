@@ -1,0 +1,220 @@
+@signup-text-color: ~"[[setting:signuptextcolor]]";
+.wdm-login-content.content {
+	padding: 0;
+}
+body.wdm-loggedOut-page #login-img{
+	height: 100vh;
+}
+.loginbox {
+	.loginpanel h2 {
+		display: none;
+	}
+
+	.forgetpass, div.desc {
+		padding: 5px;
+		color: white;
+	}
+
+	.subcontent.loginsub {
+		background: #fff;
+	    border: 0;
+	    padding: 15px 25px;
+		.desc {
+			display: none;
+		}
+	}
+	.subcontent.guestsub {
+		padding: 15px 25px;
+	    margin-top: 0;
+	    background: #eee;
+		.desc {
+			display: none;
+		}
+	}
+	border-radius: 3px;
+	.form-group;
+	.row;
+	.loginpanel {
+		min-height: 20px;
+		border: 0;
+		position: relative;
+		box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+		padding: 0 !important;
+	}
+	&.onecolumn  {
+		.loginpanel {
+			.make-xs-column(12);
+			.make-sm-column(4);
+			.make-sm-column-push(4);
+		}
+	}
+
+	&.twocolumns {
+
+		.loginpanel {
+			.make-xs-column(12);
+			.make-sm-column(4);
+			.make-sm-column-push(2);
+		}
+		h2 {
+			padding: 0px 15px;
+			font-weight: 200;
+			font-size: 40px;
+		}
+		.signuppanel {
+			.make-xs-column(12);
+			.make-sm-column(4);
+			.make-sm-column-push(2);
+			background: transparent;
+			padding: 20px;
+			line-height: 2;
+			text-align: center;
+			color: @signup-text-color !important;
+		}
+	}
+
+	.rememberpass{
+		margin-bottom: 10px;
+		float: left;
+		color: #999;
+	}
+	.forgetpass {
+		margin-top: 10px;
+		text-align: center;
+		a {
+			color: #777 !important;
+			text-decoration: none;
+		}
+	}
+	.loginform {
+		.form-label {
+			text-align: left;
+			width: 100%;
+			margin-top: 30px;
+			margin-bottom: 5px;
+			display: none;
+		}
+		.form-input {
+			width: 100%;
+			margin: 10px 0px;
+			input[type="text"],
+			input[type="password"] {
+				height: 45px;
+				width: 100%;
+				background-color: #eee!important;
+				max-width: 100%;
+				color: #333;
+				border: 0;
+			}
+			input[type="submit"] {
+				margin: 0;
+			}
+		}
+	}
+	input[type="submit"]#loginbtn {
+		width: 110px;
+		border-radius: 0;
+		padding: 10px;
+		border:0;
+		font-weight: 600;
+		display: block;
+		margin: 5px auto;
+		transition: all 0.2s;
+		background-color: @active-skin-color;
+		color: white;
+		&:hover {
+			color: #e6e6e6;
+			background-color: @active-skin-color-dark;
+		}
+	}
+	
+	.guestform {
+		input[type="submit"] {
+			background: #aaa;
+			border: 0;
+			color: white;
+			border-radius: 0;
+			padding: 10px;
+			font-weight: 600;
+			transition: all 0.2s;
+			width: 100%;
+			&:hover {
+				background: #999;
+			}
+		}
+	}
+	.desc {
+		line-height: 30px;
+		color: @text-color;
+	}
+	.subcontent {
+		padding: 0 15px;
+		margin: 0;
+	}
+}
+#login-img {
+	.wdm-logo-wrapper {
+		display: block;
+		width: 100%;
+		text-align: center;
+		margin: 20px 0;
+		height: 100px;
+		.logo-lg img {
+			max-height: 100px;
+    		width: auto;
+		}
+
+		.logo-lg i {
+			line-height: 100px;
+		}
+	}
+	a {
+		color: @signup-text-color;
+	}
+}
+
+.signupform {
+	input[type="submit"] {
+		border-radius: 0;
+		padding: 10px;
+		border:0;
+		font-weight: 600;
+		display: block;
+		margin: 5px auto;
+		transition: all 0.2s;
+		background-color: @active-skin-color;
+		color: white;
+		&:hover {
+			color: #e6e6e6;
+			background-color: @active-skin-color-dark;
+		}
+	}
+}
+
+.generalbox {
+	#notice{
+		color: @signup-text-color;
+	}
+}
+
+@media (max-width: 769px) {
+	.loginbox.twocolumns .loginpanel,
+	.loginbox.twocolumns .signuppanel,
+	.loginbox.onecolumn div.loginpanel {
+		width: 50%;
+		left: 25%;
+		clear: left;
+	}
+	#login-img {
+		height: 100% !important;
+	}
+}
+@media (max-width: 600px) {
+	.loginbox.twocolumns .loginpanel,
+	.loginbox.twocolumns .signuppanel,
+	.loginbox.onecolumn div.loginpanel {
+		width: 75%;
+		left: 12.5%;
+		clear: left;
+	}
+}

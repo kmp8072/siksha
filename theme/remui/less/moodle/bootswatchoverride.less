@@ -1,0 +1,341 @@
+/* Overriding default colors and style and fonts */
+*, p {
+  font-family: ~"[[setting:bodyfont]]";
+}
+
+/* @group Headings */
+h1, h2, h3, h4, h5, h6,
+.socials p,
+#profileheading,
+#socialheading,
+.forumpost .subject,
+.block_login label {
+    font-family: ~"[[setting:headingfont]]";
+}
+
+h1, h2, h3, h4, h5, h6 {
+   span {
+       font-family: inherit;
+   }
+}
+
+/* * Override bootswatch variables
+* ------------------------- */
+
+//COLORS
+//--------------------------------------------------------
+
+@light-blue: #3c8dbc;  //Primary
+@red:        #dd4b39;  //Danger
+@green:      #00a65a;  //Success
+@aqua:       #00c0ef;  //Info
+@yellow:     #f39c12;  //Warning
+@blue:       #0073b7;
+@navy:       #001F3F;
+@teal:       #39CCCC;
+@olive:      #3D9970;
+@lime:       #01FF70;
+@orange:     #FF851B;
+@fuchsia:    #F012BE;
+@purple:     #605ca8;
+@maroon:     #D81B60;
+@black:      #111;
+@gray:       #d2d6de;
+
+
+/* Light sidebar hover and content bg */
+@sidebar-light-hover-bg: #f1f1f1;
+@sidebar-light-submenu-bg: #f2f2f2;
+
+/* Both Side bar and logo width */
+@sidebar-width: 250px;
+
+/* Body background (Affects main content background only) */
+@body-bg: #fff;
+
+/* override box less */
+@box-border-radius: 0px;
+@box-boxshadow: 0 0px 4px rgba(95, 95, 95, 0.5);
+
+.box {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    border: 1px solid #e2e2e2;
+    border-top: 1px solid #e2e2e2;
+}
+
+/* override info box style */
+.info-box {
+    min-height: 60px;
+    box-shadow: none;
+
+    .info-box-icon {
+        display: block;
+        float: left;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        font-size: 45px;
+        line-height: 60px;
+        background: transparent;
+    }
+
+    .info-box-content {
+        padding: 7px 10px;
+        margin-left: 60px;
+    }
+}
+
+/* Utility classes */
+.noshadow {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    border: 1px solid #e2e2e2;
+}
+
+.nopadding {
+    padding: 0;
+}
+
+.nominheight {
+    min-height: 100%;
+}
+
+/* Override various elements from bootswatch based on active skin color */
+.groupdisplay > .nav-tabs > li.active, .nav-tabs-custom > .nav-tabs > li.active {
+    border-top-color: @active-skin-color !important;
+}
+
+/* Override bootswatch for nav tabs used in moodle */
+.nav-tabs-custom {
+    box-shadow: none;
+}
+
+ul.nav-tabs, .nav-tabs-custom ul.nav-tabs {
+    margin-bottom: 15px;
+    border-bottom-color: #eee;
+
+    > li.active {
+      > a {
+            border-top-color: transparent;
+            border-left-color: #eee;
+            border-right-color: #eee;
+        }
+    }
+}
+
+.bg-primary, .btn-primary, .label-primary .progress-bar-primary, {
+  background-color : @active-skin-color !important;
+}
+
+.btn-primary {
+  border-color: @active-skin-color-dark !important;
+    &:hover, &:active, &.hover {
+        background-color: @active-skin-color-dark !important;
+    }
+}
+
+/* Override messages dropdown menu less */
+.navbar-nav > .messages-menu {
+    //Inner menu
+    > .dropdown-menu > li .menu {
+        // Messages menu item
+        > li > a.unread {
+            background-color: #f4f4f4;
+            color: #333;
+            font-weight: 600;
+        }
+    }
+}
+
+label {
+//    padding-right: 10px;
+}
+
+.select.autosubmit.singleselect {
+    padding: 0px;
+}
+
+/* override alert box style of bootswatch */
+.alert {
+    padding: 5px;
+    border-radius: 0;
+}
+
+/* Overlays for tooltip */
+.ui-widget-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ui-tooltip {
+    background: #666;
+    color: white;
+    border: none;
+    padding: 0;
+    opacity: 1;
+    position: absolute;
+    width: auto;
+    z-index: 2000;
+}
+
+.ui-tooltip-content {
+    position: relative;
+    padding: 5px 10px;
+}
+
+.clearfix.collapsible {
+    .fcontainer.clearfix {
+        .fitem.fitem_actionbuttons.fitem_fgroup {
+            .felement.fgroup {
+                display: inline-flex;
+            }
+        }
+    }
+}
+
+span.warning {
+    &:extend(.statuswarning);
+}
+
+.box.generalbox {
+    padding: 10px;
+}
+
+/* User Profile Page CSS Override from Bootswatch */
+.widget-user-header {
+    .widget-user-image {
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+            float: none;
+        }
+    }
+
+    .widget-user-username, .widget-user-desc {
+        margin-left: 0;
+    }
+}
+
+/* For the dropdown in the header bar
+ * Remove all the padding ie. Left and Right so the text won't go in next line.
+ */
+.user-body {
+    >div{
+        padding: 0;
+    }
+}
+
+.btn {
+    border-radius: 0;
+}
+
+/* modify header styling provided by bootswatch */
+.content-header {
+    .make-row();
+    min-height: 55px;
+    padding: 10px 15px 0 15px;
+
+    .heading {
+        .make-lg-column(7);
+        .make-md-column(7);
+        .make-sm-column(6);
+        .make-xs-column(12);
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+    }
+
+    .action-buttons {
+        .make-lg-column(7);
+        .make-md-column(7);
+        .make-sm-column(6);
+        .make-xs-column(12);
+
+        .text-right;
+
+        .singlebutton {
+            display: inline-block;
+
+            div {
+                margin: 5px 0 5px 5px;
+            }
+        }
+
+        .singlebutton input[type="submit"] {
+            margin: 0;
+        }
+
+        .forumsearch #searchforums {
+            margin: 0 0 0 10px;
+        }
+        .forumsearch {
+            input {
+                display: inline;
+            }
+        }
+    }
+}
+
+.content-breadcrumb {
+    position: relative;
+    overflow: auto;
+    padding: 0 15px;
+}
+
+.content-breadcrumb > .breadcrumb {
+    font-size: 12px;
+    padding: 0px 5px 0px 2px;
+    margin: 5px 0 0 0;
+    border-radius: 2px;
+    background: #fff;
+
+    li a {
+        color: #444;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    @media (max-width: @screen-sm-max) {
+        background: @gray;
+        padding: 5px;
+        padding-left: 10px;
+        li:before {
+            color: darken(@gray, 20%);
+        }
+    }
+}
+
+/* license alert padding if fixed header layout */
+.license-nag {
+    margin: 0;
+    position: absolute;
+    z-index: 1030;
+    width: 100%;
+
+    .close {
+        opacity: 1;
+        color: white;
+
+        &:hover {
+            opacity: 1;
+            background: transparent;
+        }
+    }
+
+    .fixed & {
+        position: fixed;
+        margin-top: @navbar-height;
+        @media (max-width: @screen-header-collapse) {
+            margin-top: @navbar-height + 50;
+        }
+    }
+}

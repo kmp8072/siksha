@@ -1,0 +1,10 @@
+{
+    "name" : "shezar/shezarlms",
+    "description" : "shezar LMS is a fully supported Open Source learning platform specifically designed for the requirements of corporate, industry and vocational training.",
+    "license" : "GPL-3.0+",
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*",
+        "phpunit/dbUnit": "1.4.*",
+        "moodlehq/behat-extension": "1.30.2"
+    }
+}

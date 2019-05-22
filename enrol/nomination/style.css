@@ -1,0 +1,11 @@
+form#enrol_nomination_manage_form tr {
+    border-left: 3px solid transparent;
+}
+
+form#enrol_nomination_manage_form tr.enrol_nomination_waitinglist_highlight {
+    border-color: grey;
+}
+
+.formaction {
+    text-align: center;
+}

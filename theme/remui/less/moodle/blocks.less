@@ -1,0 +1,1565 @@
+/* basic block styling */
+.block {
+    .box;
+    .header {
+        .box-header;
+        padding: 12px 5px;
+        h2 {
+            .box-title;
+            &:before {
+                float: left;
+                font-family: FontAwesome;
+                font-size: 1em;
+                height: 1.3em;
+                margin-right: 0.5em;
+                margin-top: -0.2em;
+                padding-top: 0.2em;
+                text-align: center;
+                width: 1.5em;
+            }
+        }
+        .block_action {
+            float: right;
+            img {
+                margin: 0 5px;
+                width: 16px;
+                height: auto;
+            }
+        }
+    }
+
+    th.header, td.header {
+        display: table-cell;
+    }
+    .content {
+        .box-body;
+        word-wrap: break-word;
+        outline: none;
+        min-height: 100px;
+        hr {
+            border: 0;
+        }
+        .post {
+            border-bottom: none;
+        }
+        .userpicture {
+            float: left;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            background: #00a65a;
+            margin-right: 10px;
+        }
+        .list {
+            li.listentry {
+                clear: both;
+            }
+            .c0 {
+                display: inline;
+            }
+            .c1 {
+                margin-left: 5px;
+                display: inline;
+            }
+        }
+
+        ul, li {
+            padding: 0;
+        }
+    }
+    .footer {
+        margin-bottom: 4px;
+    }
+    .blockannotation {
+        font-size: 0.75em;
+        margin: -1em 0 1em;
+    }
+    .singleselect select {
+        .form-control;
+    }
+}
+
+// move actions to left on editing on
+.editing .block .header .commands {
+    text-align: left !important;
+}
+
+/* Dark and light sidebar block style. Support for block css change according to theme options selected.
+ *
+ * Affects only blocks in sidebar.
+ */
+
+ /* blocks open state less */
+ .dark-sidebar .block {
+    // undo block box styling from sidebar blocks
+    background: transparent;
+    margin-bottom: 0px;
+    border: none;
+
+    .header {
+        border-left: 3px solid transparent;
+        padding: 12px 5px;
+        color: @sidebar-dark-hover-color;
+        background: @sidebar-dark-hover-bg;
+        border-left-color: @active-skin-color;
+    }
+    h2 {
+        font-size: 1em;
+    }
+    .content {
+        background: @sidebar-dark-submenu-bg;
+        color: @sidebar-dark-submenu-color;
+        .list a {
+            color: @sidebar-dark-submenu-color;
+        }
+        .list a.active,
+        .list a:hover,
+        .footer a.active,
+        .active_tree_node a,
+        .footer a:hover,
+        .tree_item:hover {
+            color: @sidebar-dark-submenu-hover-color;
+        }
+        .list a.active {
+            font-weight: 600;
+        }
+    }
+}
+
+.light-sidebar .block {
+    // undo block box styling from sidebar blocks
+    background: transparent;
+    margin-bottom: 0px;
+    border: none;
+
+    .header {
+        border-left: 3px solid transparent;
+        padding: 12px 5px;
+        color: @sidebar-light-hover-color;
+        background: @sidebar-light-hover-bg;
+        h2 {
+            font-size: 1em;
+            font-weight: 600;
+        }
+    }
+    .content {
+        background: @sidebar-light-submenu-bg;
+        color: @sidebar-light-submenu-color;
+        .list a {
+            color: @sidebar-light-submenu-color;
+        }
+        .list a.active,
+        .list a:hover,
+        .footer a.active,
+        .active_tree_node a,
+        .footer a:hover,
+        .tree_item:hover {
+            color: @sidebar-light-submenu-hover-color;
+        }
+        .list a.active {
+            font-weight: 600;
+        }
+    }
+}
+
+
+/* blocks hidden state less */
+
+.dark-sidebar .block.hidden {
+    .header {
+        border-left: 3px solid transparent;
+        padding: 12px 5px;
+        color: @sidebar-dark-color;
+        background: transparent;
+        border-left-color: transparent;
+        &:hover {
+            color: @sidebar-dark-hover-color;
+            background: @sidebar-dark-hover-bg;
+            border-left-color: @active-skin-color;
+        }
+    }
+}
+
+.light-sidebar .block.hidden {
+    .header {
+        border-left: 3px solid transparent;
+        padding: 12px 5px;
+        background: @sidebar-light-bg;
+        color: @sidebar-light-color;
+        border-left-color: transparent;
+        &:hover {
+            color: @sidebar-light-hover-color;
+            background: @sidebar-light-hover-bg;
+        }
+    }
+}
+
+/* sidebar blocks styling end */
+#block-region-side-post .block .content fieldset,
+#block-region-side-pre .block .content fieldset {
+    text-align: left;
+}
+
+.block .block_tree {
+    margin: 0;
+    padding: 0;
+}
+
+.block .block_tree li,
+.unlist,
+.unlist li,
+.inline-list,
+.inline-list li,
+.block .list li,
+.tabtree li {
+    padding: 0;
+    margin: 0 0 15px 0!important;
+    list-style: none;
+}
+
+.block .block_tree li:last-child {
+    padding: 0;
+}
+
+.block .block_tree .tree_item {
+    margin: 0 0 15px 0!important;
+}
+
+.block li.item_with_icon > p img {
+    vertical-align: middle;
+    position: relative;
+    left: 0;
+    top: 2px!important;
+    width: 14px!important;
+    height: 14px!important;
+}
+
+.block .block_tree .tree_item.branch {
+    background-position: 0px 2px;
+}
+
+.block .block_tree .tree_item.emptybranch {
+    background-position: 0px 2px;
+}
+
+.tree_item .leaf .hasicon {
+    a {
+        img {
+
+        }
+    }
+}
+
+.editing {
+    .block {
+        .header {
+            .commands {
+                clear: both;
+                text-align: right;
+                > a {
+                    margin: 0 3px;
+                }
+                .icon img {
+                    width: 12px;
+                    height: 12px;
+                }
+                img.actionmenu {
+                    width: auto;
+                }
+            }
+        }
+    }
+}
+
+.block.list_block {
+    .unlist {
+        & > li {
+            & > .column {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.blockmovetarget,
+.block.beingmoved {
+    border-width: 2px;
+    border-style: dashed;
+}
+
+.blockmovetarget {
+    display: block;
+    height: 1em;
+    margin-bottom: 1em;
+}
+
+.block .block-hider-show,
+.block .block-hider-hide {
+    cursor: pointer;
+}
+
+.block .block-hider-show,
+.block.hidden .block-hider-hide {
+    display: none;
+}
+
+.block.hidden .block-hider-show {
+    display: inline;
+}
+
+.block.hidden .content {
+    display: none;
+}
+
+/* per block styling */
+
+.block_course_summary.block {
+    .dark-sidebar & {
+        .content {
+            .text_to_html {
+                span {
+                    color: @sidebar-dark-submenu-color!important;
+                }
+            }
+        }
+    }
+
+    .light-sidebar & {
+        .content {
+            .text_to_html {
+                span {
+                    color: @sidebar-dark-submenu-color!important;
+                }
+            }
+        }
+    }
+}
+
+.block_settings.block {
+    .block_tree_box {
+        border-top: none;
+        background: transparent;
+        margin-bottom: 0px;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    .adminsearchform:extend(.sidebar-form all) {
+        .input-group-btn button {
+            min-width: 45px;
+        }
+        margin: 0!important;
+
+        .light-sidebar & {
+            border: 1px solid #ddd;
+
+            input[type="text"], .btn {
+                background-color: #fff;
+            }
+        }
+    }
+}
+
+
+/* Calendar block start*/
+
+.block .calendar_filters {
+    ul {
+        list-style: none;
+        .calendar_event {
+            padding: 7px 0;
+
+            a {
+                color: white;
+                span:first-child {
+                    img {
+                        display: none;
+                    }
+                    &:before {
+                        float: left;
+                        font-family: FontAwesome;
+                        font-size: 1em;
+                        height: 1.3em;
+                        margin-right: 0.5em;
+                        margin-top: -0.2em;
+                        padding-top: 0.2em;
+                        text-align: center;
+                        width: 1.5em;
+                        content: "\f073";
+                    }
+                }
+                span.calendar_event_global {
+                    color: @calendar-event-global-color;
+                }
+                span.calendar_event_course {
+                    color: @calendar-event-course-color;
+                }
+                span.calendar_event_group {
+                    color: @calendar-event-group-color;
+                }
+                span.calendar_event_user {
+                    color: @calendar-event-user-color;
+                }
+                color: #444;
+                .light-sidebar & {
+                    // color: #444;
+                }
+                .dark-sidebar & {
+                    color: #ddd;
+                }
+            }
+        }
+    }
+}
+
+.block.block_calendar_month,
+.minicalendarblock {
+    table.minicalendar {
+        text-align: center;
+        width: 100%;
+        caption {
+            padding: 15px 0;
+            background: #fff;
+            border-bottom: 0;
+            .dark-sidebar & {
+                background: #374850;
+                border: 0;
+            }
+            h3 {
+                text-align: center;
+                a {
+                    color: #888;
+                    .dark-sidebar & {
+                        color: #eee;
+                    }
+                }
+            }
+            .calendar-controls {
+                text-align: center;
+                a {
+                    color: #555;
+                    .dark-sidebar & {
+                        color: #ddd;
+                    }
+                }
+
+                .previous,
+                .next {
+                    width: 15%;
+                    display: inline-block;
+                }
+                .current {
+                    width: 70%;
+                    display: inline-block;
+                }
+            }
+        }
+        tbody {
+            border-top: 0;
+            .dark-sidebar & {
+                border: 0;
+            }
+        }
+        tr {
+            &.weekdays {
+                background: #fff;
+                border-bottom: 1px solid #e2e2e2;
+                color: #777;
+                .dark-sidebar & {
+                    background: #374850;
+                    color: #ddd;
+                    border: 0;
+                    border-bottom: 1px solid #666;
+                }
+            }
+            th,td {
+                padding: 10px 4px;
+                font-size: 0.8em;
+            }
+            th {
+                abbr[title],
+                abbr[data-original-title] {
+                    text-transform: uppercase;
+                    border: none;
+                }
+            }
+            td {
+                color: #444;
+                background: #fff;
+                .dark-sidebar & {
+                    color: #fff;
+                    background: #374850;
+                }
+                a {
+                    color: white;
+                }
+                &.today {
+                    .dark-sidebar & {
+                        background: #374850!important;
+                        a {
+                            color: #fff!important;
+                        }
+                    }
+                    .light-sidebar & {
+                        background: #fff!important;
+                        a {
+                            color: #444;
+                        }
+                    }
+                    border: 2px solid #00a65a;
+                    .calendar_event_global, .calendar_event_course, .calendar_event_group, .calendar_event_user {
+                        color: #fff;
+                    }
+                }
+                &.calendar_event_global {
+                    background: @calendar-event-global-color!important;
+                }
+                &.calendar_event_course {
+                    background: @calendar-event-course-color!important;
+                }
+                &.calendar_event_group {
+                    background: @calendar-event-group-color!important;
+                }
+                &.calendar_event_user {
+                    background: @calendar-event-user-color!important;
+                }
+            }
+        }
+        tr:last-child {
+            td:first-child {
+                border-radius: 0 0 0 5px;
+            }
+            td:last-child {
+                border-radius: 0 0 5px 0;
+            }
+        }
+        .calendar-event-panel {
+            background: #999;
+            .dark-sidebar & {
+                background: #374850
+            }
+            border: none;
+            outline: none!important;
+            .yui3-overlay-content {
+                .dark-sidebar & {
+                    background-color: #29363c;
+                    border: 1px solid #4a606b;
+                }
+                padding: 54px 0px;
+                background-color: #fff;
+                border: 1px solid #e2e2e2;
+                margin: 0;
+                h2 {
+                    &.eventtitle {
+                        line-height: 1.2;
+                        font-size: 18px;
+                    }
+                }
+                .eventcontent {
+                    img {
+                        padding-right: 5px;
+                        height: 14px;
+                        width: 14px;
+                    }
+                    a {
+                        color: #444;
+                    }
+                    .dark-sidebar & {
+                        a {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.minicalendarblock {
+    margin-bottom: 10px;
+}
+/* Calendar end*/
+
+
+/* Calendar upcoming block */
+
+.block_calendar_upcoming {
+    .footer {
+        margin-top: .5em;
+    }
+    .content {
+        span.icon {
+            float: left;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            background: @active-skin-color;
+            margin-right: 10px;
+            margin-top: 3px;
+            img {
+                margin: 0;
+                -webkit-filter: brightness(2);
+                filter: brightness(2);
+            }
+        }
+        .event a {
+            color: @sidebar-light-submenu-color;
+            .dark-sidebar & {
+                color: @sidebar-dark-submenu-color;
+            }
+            &:hover {
+                color: @sidebar-light-submenu-hover-color;
+                .dark-sidebar & {
+                    color: @sidebar-dark-submenu-hover-color;
+                }
+            }
+        }
+        // remove annoying 3 dots
+        .gotocal,
+        .newevent {
+            color: transparent;
+            a {
+                .label;
+                .text-blue;
+            }
+        }
+        .gotocal {
+            .pull-right;
+            a {
+                .text-blue;
+            }
+        }
+        .footer {
+            padding-top: 20px;
+            padding-left: 0px;
+        }
+    }
+}
+
+
+/* search form block */
+
+.blogsearchform,
+.searchform {
+    input[type="text"] {
+        .form-group;
+        .form-control;
+    }
+    fieldset {
+        width: 100%;
+    }
+}
+
+
+/* rss client block */
+
+.block_rss_client {
+    .content li {
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid @blockquote-border-color;
+        border-radius: @border-radius-base;
+        .link {
+            font-weight: inherit;
+        }
+    }
+    .list li:first-child {
+        border-top-width: 1px;
+    }
+}
+
+.block_news_items .content {
+    .newlink {
+        padding-bottom: 10px;
+    }
+    ul li {
+        padding: 2px;
+        display: table;
+        width: 100%;
+        .info {
+            display: table-header-group;
+        }
+        .date {
+            font-size: @font-size-small;
+            display: inline;
+        }
+        .name {
+            font-size: @font-size-small;
+            padding-left: 1ex;
+            display: inline;
+        }
+    }
+    .footer {
+        padding-top: 10px;
+        padding-left: 0px;
+    }
+}
+.block_globalsearch {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f002";
+                }
+            }
+        }
+    }
+}
+
+.block_site_main_menu {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0a1";
+                }
+            }
+        }
+    }
+}
+
+.block_news_items {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0a1";
+                }
+            }
+        }
+    }
+}
+
+.block_navigation {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0e8";
+                }
+            }
+        }
+    }
+
+    .content {
+        .block_tree ul ul {
+            margin: 0 0 0 21px;
+        }
+    }
+}
+
+.block_calendar_upcoming {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f073";
+                }
+            }
+        }
+    }
+}
+
+.block_calendar_month {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f073";
+                }
+            }
+        }
+    }
+}
+
+.block_course_list {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f108";
+                }
+            }
+        }
+    }
+}
+
+.block_completionstatus {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0e4";
+                }
+            }
+        }
+    }
+}
+
+.block_selfcompletion {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0e4";
+                }
+            }
+        }
+    }
+}
+
+.block_rss_client {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f09e";
+                }
+            }
+        }
+    }
+}
+
+.block_rss_plus {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f09e";
+                }
+            }
+        }
+    }
+}
+
+.block_blog_menu {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f02d";
+                }
+            }
+        }
+    }
+}
+
+.block_quiz_results {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f080";
+                }
+            }
+        }
+    }
+}
+
+.block_quiz_navblock {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f126";
+                }
+            }
+        }
+    }
+}
+
+.block_glossary_random {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0eb";
+                }
+            }
+        }
+    }
+}
+
+.block_book_toc {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f02d";
+                }
+            }
+        }
+    }
+}
+
+.block_participants {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0c0";
+                }
+            }
+        }
+    }
+}
+
+.block_people {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0c0";
+                }
+            }
+        }
+    }
+}
+
+.block_online_users {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0c0";
+                }
+            }
+        }
+    }
+    .content {
+        .info {
+            .label;
+            .text-blue;
+            max-width: 50%;
+            margin: 0 auto;
+            padding: 5px;
+            display: block;
+        }
+
+        .listentry {
+            .clearfix;
+        }
+    }
+}
+
+.block_comments {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f075";
+                }
+            }
+        }
+    }
+    .content {
+        .comment-area {
+            .db textarea {
+                .dark-sidebar & {
+                    background-color: lighten(@sidebar-dark-bg, 10%);
+                    border: 1px solid transparent;
+                    &:focus,
+                    &:focus {
+                        color: @sidebar-dark-submenu-color!important;
+                    }
+                }
+            }
+            .fd a {
+                .btn;
+                .btn-block;
+                color: @sidebar-dark-submenu-hover-color;
+            }
+        }
+        .comment-message {
+            padding: 5px;
+            .comment-message-meta {
+                padding-right: 12px;
+            }
+            span.picture {
+                margin-right: 5px;
+                img {
+                    height: 20px;
+                    width: 20px;
+                }
+            }
+            span.user {
+                a {
+                    color: #3c8dbc;
+                }
+            }
+            div.text {
+                margin: 5px 0 0 25px;
+            }
+        }
+    }
+}
+
+.block_settings {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f085";
+                }
+            }
+        }
+    }
+}
+
+.block_admin_bookmarks {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f085";
+                }
+            }
+        }
+    }
+}
+
+.block_blog_tags {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f02c";
+                }
+            }
+        }
+    }
+}
+
+.block_tags {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f02c";
+                }
+            }
+        }
+    }
+}
+
+.block_private_files {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f114";
+                }
+            }
+        }
+    }
+}
+
+.block_block_mentees {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0c0";
+                }
+            }
+        }
+    }
+}
+
+.block_messages {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0e0";
+                }
+            }
+        }
+    }
+
+    .content {
+        .listentry {
+            .clearfix;
+        }
+    }
+}
+
+.block_community {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0ac";
+                }
+            }
+        }
+    }
+}
+
+.block_login {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f007";
+                }
+            }
+        }
+    }
+}
+
+.block_recent_activity {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f017";
+                }
+            }
+        }
+    }
+}
+
+.block_search_forums {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0e6";
+                }
+            }
+        }
+    }
+}
+
+.block_myprofile {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f007";
+                }
+            }
+        }
+    }
+    .content {
+        .myprofileitem {
+            .text-center;
+            margin: 5px 0;
+            img {
+                .img-circle;
+            }
+            .email {
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+        }
+    }
+}
+
+.block_adminblock {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f055";
+                }
+            }
+        }
+    }
+}
+
+.block_feedback {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f087";
+                }
+            }
+        }
+    }
+}
+
+.block_poll {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f080";
+                }
+            }
+        }
+    }
+}
+
+.block_flickr {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f03e";
+                }
+            }
+        }
+    }
+}
+
+.block_youtube {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f145";
+                }
+            }
+        }
+    }
+}
+
+.block_course_badges {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f091";
+                }
+            }
+        }
+    }
+}
+
+.block_twitter_search {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f099";
+                }
+            }
+        }
+    }
+}
+
+.block_lrc {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f02d";
+                }
+            }
+        }
+    }
+}
+
+.block_heritage {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f02d";
+                }
+            }
+        }
+    }
+}
+
+.block_badges {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0a3";
+                }
+            }
+        }
+    }
+    .content {
+        .badges {
+            li {
+                width: 33%;
+                float: left;
+                position: relative;
+                text-align: center;
+                padding: 10px;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+                .badge-name {
+                    .dark-sidebar & {
+                        color: @sidebar-dark-submenu-color;
+                    }
+                    color: @sidebar-light-submenu-color;
+                }
+            }
+        }
+    }
+}
+
+.block_login {
+    div.rememberusername {
+        margin-top: 10px;
+    }
+    input#login_username, input#login_password {
+        display: block;
+        width: 100%;
+    }
+}
+
+.block_course_overview {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f0c9";
+                }
+            }
+        }
+    }
+
+    .content {
+
+        margin: 0;
+        .course_list {
+
+            .make-row();
+
+            .coursebox {
+
+                .course_title {
+                    position: relative;
+                    min-height: 70px;
+                    padding: 10px 10px 0 10px;
+                    background: #f2f2f2;
+                    border: 1px solid #eee;
+                }
+
+                .title {
+                    font-size: 1.2em;
+                    a {
+                        color: #333;
+                    }
+                }
+
+                .make-xs-column(12);
+                .make-sm-column(6);
+                .make-md-column(4);
+
+                @media (min-width: @screen-lg-min){
+                    &:nth-child(3n+1){
+                        clear: left;
+                    }
+                }
+
+                @media (min-width: @screen-md-min) and (max-width: @screen-md-max){
+                    &:nth-child(3n+1){
+                        clear: left;
+                    }
+                }
+
+                @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max){
+                    &:nth-child(2n+1){
+                        clear: left;
+                    }
+                }
+
+                .progress-section {
+                    padding: 4px 0;
+                    #course-info {
+                        text-align: center;
+                        color: #555;
+                    }
+                    .progress {
+                        margin: 5px 0;
+                        display: block;
+                    }
+                }
+
+                .activity_info {
+                    padding: 4px 0;
+                }
+
+                .main-sidebar & {
+                    width: 100% !important;
+                }
+
+                .control-sidebar & {
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+}
+
+.block#mod_quiz_navblock {
+    .content {
+        .endtestlink {
+            text-align: center;
+            padding: 5px;
+        }
+        .qn_buttons {
+            .qnbutton {
+                border: none;
+                margin: 0 0 10px 6px;
+                border-radius: 26px;
+                line-height: 26px;
+                float: left;
+                width: 26px;
+                height: 26px;
+                line-height: 26px!important;
+                color: whitesmoke;
+                font-size: 12px;
+                .trafficlight {
+                    border-top: none;
+                    border-bottom: none;
+                }
+                &.blocked,
+                &.notyetanswered,
+                &.requiresgrading,
+                &.invalidanswer {
+                    background-color: #444;
+                    color: #eee;
+                    .dark-sidebar & {
+                        background-color: #D8D8D8;
+                        color: #666;
+                    }
+                }
+                &.correct {
+                    background-color: #00a65a;
+                }
+                &.partiallycorrect {
+                    background-color: #f39c12;
+                }
+                &.notanswered,
+                &.incorrect {
+                    background-color: #f56954;
+                }
+                &.answersaved {
+                    background-color: #666;
+                    color: #D8D8D8;
+                }
+            }
+
+            .qnbutton.flagged .trafficlight {
+                background-position: 0px -6px !important;
+            }
+            
+            .qnbutton:visited:hover,
+            .qnbutton:link:hover {
+                text-decoration: none;
+            }
+            .thispage {
+                // background: @active-skin-color;
+                color: white;
+                .thispageholder {
+                    border: none;
+                }
+            }
+        }
+        #quiz-timer {
+            display: none!important;
+        }
+        /**
+         * This element is created inside your target element
+         * It is used so that your own element will not need to be altered
+         **/
+         .quiztimer {
+            height: 80px;
+            width: 230px;
+            border-radius: 5px;
+            background: #EEEEEE;
+            color: darken(@sidebar-light-submenu-color, 25%);
+            .dark-sidebar & {
+                background: rgba(0, 0, 0, 0.13);
+                color: whitesmoke;
+            }
+        }
+        .time_circles {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        /**
+         * This is all the elements used to house all text used
+         * in time circles
+         **/
+         .time_circles > div {
+            position: absolute;
+            text-align: center;
+        }
+        /**
+         * Titles (Days, Hours, etc)
+         **/
+         .time_circles > div > h4 {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        /**
+         *  Time numbers, ie: 12
+         **/
+         .time_circles > div > span {
+            margin: 0;
+            padding: 0;
+            display: block;
+            width: 100%;
+            text-align: center;
+            line-height: 1;
+            font-weight: bold;
+        }
+    }
+}
+
+
+/* remove gap between two blocks in sidebar */
+.skip-block-to {
+    display: none;
+}
+
+/**
+ * Support for blocks provided by various moodle plugins
+**/
+
+/* course contacts block */
+.block_course_contacts {
+    .header {
+        .title {
+            h2 {
+                &:before {
+                    content: "\f007";
+                }
+            }
+        }
+    }
+    .content {
+        .box {
+            h2 {
+                font-size: 1.75rem;
+            }
+            .no-border;
+            padding: 0 5px;
+            background: transparent;
+            .ccard {
+                margin: 5px 0 10px -4px;
+                padding: 5px;
+                hr {
+                    display: none;
+                }
+                .info .name {
+                    font-size: 1.1em;
+                }
+                .comms {
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}

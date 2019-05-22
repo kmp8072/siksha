@@ -1,0 +1,75 @@
+.control-sidebar {
+
+    &.control-sidebar-dark {
+        // quick links style in post sidebar
+        .quick-links {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: @sidebar-dark-bg;
+            border-bottom: 1px solid #374850;
+
+            .quick-link {
+                color: @sidebar-dark-submenu-color;
+
+                &:hover {
+                    color: @sidebar-dark-submenu-hover-color;
+                }
+            }
+        }
+    }
+
+    &.control-sidebar-light {
+        // quick links style in post sidebar
+        .quick-links {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: @sidebar-light-bg;
+            border-bottom: 1px solid #ddd;
+
+            .quick-link {
+                color: @sidebar-light-submenu-color;
+
+                &:hover {
+                    color: @sidebar-light-submenu-hover-color;
+                }
+            }
+        }
+    }
+}
+
+.dark-sidebar {
+    // buttons style in post sidebar
+    // forum search form in action buttons section
+    .forumsearch {
+        #searchforums {
+            background-color: lighten(@sidebar-dark-bg, 10%);
+            border: none;
+            color: @sidebar-dark-submenu-color!important;
+        }
+
+        #search {
+            box-shadow: none;
+            background-color: #374850;
+            border: 1px solid transparent;
+            height: 35px;
+            color: #666;
+
+            &:focus {
+                color: #666;
+                background-color: #fff;
+            }
+        }
+    }
+}
+
+.light-sidebar {
+    // buttons style in post sidebar
+    
+    // forum search form in action buttons section
+    .forumsearch {
+        #searchforums {
+            color: @sidebar-light-submenu-color!important;
+            border-radius: 0;
+        }
+    }
+}

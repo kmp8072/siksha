@@ -1,0 +1,3 @@
+mygoals,shezar_hierarchy
+setting_core_enablemyteam,shezar_flavour
+setting_core_enablemyteam_desc,shezar_flavour

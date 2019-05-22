@@ -1,0 +1,142 @@
+/** Appraisals **/
+#fgroup_id_addquestgroup select {
+    width: 50%;
+    max-width: 260px;
+}
+
+#fgroup_id_addquestgroup .fitemtitle {
+    display: none;
+}
+
+.appraisal-stage input[type="submit"] {
+    margin-bottom: 0;
+}
+
+#fitem_id_submitbutton {
+    background: transparent;
+    border: none;
+}
+
+@media screen and (max-width: 979px) {
+    .appraisal-stages {
+        width: 100%;
+    }
+
+    .appraisal-stagetitle {
+        width: 24%;
+    }
+    .appraisal-stageinfo {
+        width: 74%;
+    }
+    .dir-ltr .appraisal-stageinfo {
+        margin: 0 2% 0 0;
+    }
+    .dir-rtl .appraisal-stageinfo {
+        margin: 0 0 0 2%;
+    }
+
+    .appraisal-stageactions {
+        width: 100%;
+    }
+
+    .appraisal-stageactions .link-as-button {
+        margin: 0 0 0 5px;
+    }
+
+    .dir-ltr div.appraisal-page-pane, .dir-rtl div.appraisal-page-pane {
+        float: none;
+    }
+
+    #appraisal-questions {
+        margin: 0;
+        width: 100%;
+    }
+
+    ul.appraisal-page-list {
+        border: 1px solid #eeeeee;
+    }
+
+    ul.appraisal-page-list li {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dir-ltr #appraisalanswers1 div.fcontainer,
+    .dir-rtl #appraisalanswers1 div.fcontainer {
+        padding: 0;
+    }
+
+    #appraisalanswers1 div.fcontainer > a {
+        height: auto;
+        left: 0 !important;
+    }
+
+    .appraisal-stage > div {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.visibleto {
+    top: 35px;
+}
+
+.visibleto-review {
+    top: 88px;
+}
+
+/** Learning Plans **/
+@media screen and (max-width: 979px) {
+    #recordoflearning-menu,
+    #dp-plans-menu,
+    #dp-plan-content {
+        float: none;
+        width: 100%;
+    }
+
+    #dp-plan-content #dp-plans-description .dp-add-plan-link {
+        width: 182px;
+        float: right;
+    }
+
+    #dp-plan-content #dp-plans-description .instructional_text {
+        width: auto;
+    }
+}
+
+/** Mod facetoface fixes */
+@media screen and (min-width: 500px) {
+    .f2f dt {
+        clear: left;
+        float: left;
+        text-align: right;
+        width: 23%;
+    }
+
+    .dir-rtl .f2f dt {
+        clear: right;
+        float: right;
+        text-align: left;
+    }
+
+    .dir-ltr .f2f dd {
+        margin-left: 23%;
+        padding-left: 5px;
+    }
+
+    .dir-rtl .f2f dd {
+        margin-right: 23%;
+        padding-right: 5px;
+    }
+}
+
+#assignform button.search,
+#assignform input[type="submit"].search {
+    margin: 2px auto;
+}
+
+#assignform input[type="text"] {
+    margin: 5px 0 0 0;
+    vertical-align: top;
+}

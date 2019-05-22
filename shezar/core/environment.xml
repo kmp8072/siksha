@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<COMPATIBILITY_MATRIX>
+    <MOODLE version="3.0" requires="2.2">
+        <CUSTOM_CHECKS>
+            <CUSTOM_CHECK level="optional" file="/shezar/core/environmentlib.php" function="shezar_core_mysql_environment_check"/>
+            <CUSTOM_CHECK level="required" file="/shezar/core/environmentlib.php" function="shezar_core_linear_upgrade_check"/>
+        </CUSTOM_CHECKS>
+    </MOODLE>
+</COMPATIBILITY_MATRIX>

@@ -1,0 +1,71 @@
+.path-rating .ratingtable,
+table.flexible,
+.generaltable {
+    .table;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+& when (@moodle-table-hover) {
+    .user-enroller-panel .uep-search-results .users,
+    table.grading-report,
+    .forumheaderlist,
+    .generaltable,
+    table.flexible,
+    table#permissions {
+        .table-hover;
+    }
+}
+
+#page-report-loglive-index .generaltable,
+#page-admin-report-log-index .generaltable,
+#page-report-log-index .generaltable,
+#page-report-log-user .generaltable,
+#page-admin-user table {
+    .table-condensed;
+}
+
+table.flexible .emptyrow {
+    display: none;
+}
+
+.left_scroller,
+.right_scroller {
+    .generaltable {
+        th,
+        td {
+            line-height: @line-height-computed;
+            box-sizing: content-box;
+        }
+    }
+}
+.table {
+    color: #444;
+
+    thead {
+        tr {
+            height: 3em;
+            th {
+                border: none;
+                a {
+                    color: @active-skin-color;
+                }
+            }
+        }
+    }
+    tbody {
+        tr {
+            td {
+                a {
+                    color: @active-skin-color;
+                }
+            }
+        }
+    }
+}
+
+#page-mod-quiz-report {
+    table#attempts td {
+        border: 0;
+    }
+}

@@ -1,0 +1,636 @@
+.content-wrapper .message {
+    .make-row();
+    width: auto;
+    .clearfix;
+    /* add box plain to all child divs to remove top borders */
+
+    .mdl-align {
+        text-align: left;
+    }
+    table {
+        tr {
+            &:nth-child(odd) {
+                > td,
+                > th {
+                  background-color: @table-bg-accent;
+              }
+          }
+          border-bottom: 1px solid @table-border-color;
+      }
+      td.heading{
+        &:extend(.panel-default > .panel-heading);
+        padding: 5px 10px;
+        font-size: @font-size-base;
+    }
+}
+tbody {
+    margin: 5px 10px;
+    padding: 5px 10px;
+}
+tbody {
+    display: table;
+    margin: 5px 0;
+    padding: 5px 0;
+    width: 100%;
+}
+.message_form {
+    width: 100%;
+    tr {
+        border: 0;
+    }
+    td {
+        background-color: inherit !important;
+    }
+    input[type="text"] {
+        .form-control;
+        display: inline-block;
+    }
+}
+.contactselector {
+    .make-md-column(3);
+    div.singleselect {
+        .box;
+        .noshadow;
+        padding: 10px;
+
+        margin-bottom:20px;
+
+        select {
+            width: 100%;
+        }
+    }
+
+
+    form {
+        input[type="submit"] {
+            &:extend(.btn, .btn-default, .btn-block, .btn-flat all);
+            margin:10px 0 10px 0;
+        }
+
+        label {
+            .heading;
+            font-weight: normal;
+        }
+    }
+
+    form#usergroupform {
+        padding: 5px 10px;
+        fieldset {
+            .make-row();
+            margin-left: 0;
+            margin-right: 0;
+            .fitem {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            label {
+                .make-md-column(4);
+                display: block !important;
+            }
+            select {
+                .make-md-column(7);
+                float: left;
+                .form-control;
+                width: auto;
+            }
+        }
+    }
+    table#message_contacts,
+    table#message_participants {
+
+        float: none !important;
+        display: block;
+        margin: 5px 5px;
+
+        td.pix {
+            padding: 10px;
+            width: 30px;
+        }
+        td.contact {
+            width: 100px;
+            padding: 10px;
+            a.messageselecteduser {
+
+            }
+        }
+
+        td.link {
+         padding: 10px;
+         width: 100px;
+     }
+ }
+
+ ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.heading {
+    padding:10px 10px 10px 0px;
+    margin-bottom:0;
+    font-size: 16px;
+    margin: 0;
+    line-height: 1;
+}
+
+.message-contacts {
+    .box;
+    .noshadow;
+
+    li {
+        &:extend(.clearfix all);
+        border-top: 1px solid #f4f4f4;
+    }
+
+    .pix, .contact, {
+        .pull-left;
+        padding:10px 5px;
+
+        a {
+            color:#444;
+        }
+
+        .userpicture{
+            &:extend(.img-circle);
+        }
+    }
+
+    .link {
+        .pull-right;
+        padding:10px 5px;
+    }
+}
+}
+.messagearea {
+    .make-md-column(9);
+
+    div.messagearea-wrap {
+        .box;
+        .noshadow;
+        padding: 10px;
+        background: white;
+    }
+
+    p.heading {
+        margin: 10px 15px;
+        font-size: @font-size-h2;
+        color: @headings-color;
+    }
+
+    #personsearch {
+        input[type="text"] {
+            width: 150px;
+            margin-right: 15px;
+        }
+        input[type="submit"] {
+            margin-right: 15px;
+        }
+
+        padding:10px;
+
+    }
+    .mdl-left {
+        .heading {
+            font-size: @font-size-base;
+        }
+        .messagesearchresults {
+            width: 100%;
+            margin: 10px 0;
+            padding: 0px 15px;
+            display: block;
+            td.pix {
+                padding: 10px;
+                width: 30px;
+            }
+            td.contact {
+                width: 30px;
+                img {
+                 margin: 10px;
+             }
+         }
+     }
+
+ }
+ .messagerecent {
+    .singlemessage {
+        .box;
+        .noshadow;
+        .otheruser {
+            &:extend(.box-widget > .box-header);
+            margin: 0px 10px;
+
+            a {
+                color: #444;
+                font-weight: 600;
+            }
+        }
+
+        .messagedate {
+            margin: 0px 10px;
+            font-weight: 400;
+            font-size: 12px;
+            &:extend(.text-muted, .pull-right);
+        }
+
+        .themessage {
+            margin: 10px;
+            display: block;
+            border: 1px solid #eee;
+            &:extend(.box-footer, .box-comments);
+        }
+
+        .messagecontext {
+            margin: 10px 15px;
+            &:extend(.box-footer);
+        }
+
+        .userpicture{
+            &:extend(.img-circle);
+            margin: 5px;
+        }
+    }
+
+}
+
+.messagehistory {
+    .messagehistory {
+        border-top: 1px solid @nav-tabs-border-color;
+        clear: both;
+        h4 {
+            font-size:14px;
+            font-weight:600;
+
+            a{
+                text-decoration:none;
+            }
+        }
+
+        .time {
+            font-weight: 400;
+            font-size: 12px;
+            .text-muted;
+        }
+
+        .mdl-left {
+            .make-row();
+        }
+
+        .mdl-left.messagecontent{
+            .translate(0, 0);
+            padding: 10px;
+            height: 250px;
+            overflow: auto;
+            color: #999;
+            height: auto;
+        }
+
+        .mdl-left.right .message {
+            .make-md-column(7);
+            .clearfix();
+            margin-left: 0;
+            margin-right: 0;
+            color: white;
+
+            .message-meta {
+                .pull-right;
+            }
+
+            .text {
+                position: relative;
+                display: block;
+                padding: 5px 10px;
+                background: #ddd;
+                border: 1px solid #ddd;
+                margin: 5px 0 0 0;
+                color: #444;
+
+                //Create the arrow
+                &:after,
+                &:before {
+                    position: absolute;
+                    right: 100%;
+                    top: 15px;
+                    border: solid transparent;
+                    border-right-color: #ddd;
+                    content: ' ';
+                    height: 0;
+                    width: 0;
+                    pointer-events: none;
+                    right: auto;
+                    left: 100%;
+                    border-right-color: transparent;
+                    border-left-color: #ddd;
+                }
+
+                &:after {
+                    border-width: 5px;
+                    margin-top: -5px;
+                }
+                &:before {
+                    border-width: 6px;
+                    margin-top: -6px;
+                }
+            }
+
+            .text .messagecontext {
+                color: #444;
+            }
+        }
+
+        .mdl-left.left .message {
+            .make-md-column(7);
+            .make-md-column-push(5);
+            .clearfix();
+            margin-left: 0;
+            margin-right: 0;
+            color: white;
+
+            .text {
+
+                p {
+                    margin: 0;
+                }
+
+                position: relative;
+                display: block;
+                padding: 5px 10px;
+                background: @active-skin-color;
+                border: 1px solid @active-skin-color;
+                margin: 5px 0 0 0;
+                color: white;
+
+                //Create the arrow
+                &:after,
+                &:before {
+                    position: absolute;
+                    right: 100%;
+                    top: 15px;
+                    border: solid transparent;
+                    border-right-color: @active-skin-color;
+                    content: ' ';
+                    height: 0;
+                    width: 0;
+                    pointer-events: none;
+                    left: auto;
+                    right: 100%;
+                    border-left-color: transparent!important;
+                    border-right-color: @active-skin-color;
+                }
+
+                &:after {
+                    border-width: 5px;
+                    margin-top: -5px;
+                }
+                &:before {
+                    border-width: 6px;
+                    margin-top: -6px;
+                }
+            }
+
+            .text .messagecontext {
+                color: #444;
+            }
+
+
+        }
+
+        .left div.deleteicon {
+            width: 20px;
+            position: absolute;
+            right: 21px;
+            top: -2px;
+        }
+
+        .right div.deleteicon {
+            width: 20px;
+            position: absolute;
+            left: 21px;
+            top: -2px;
+        }
+    }
+
+    #message_user_pictures {
+        &:extend(.clearfix all);
+        margin-bottom:0px;
+
+        .user {
+            .make-xs-column(5);
+            text-align: center;
+
+            .heading {
+                padding:5px;
+                font-weight:600;
+            }
+
+            .useractionlinks {
+                padding:5px;
+                color:white;
+            }
+
+            span.addcontact a {
+                .btn;
+                .btn-primary;
+                .btn-xs;
+                .btn-flat;
+            }
+
+            span.removecontact a {
+                .btn;
+                .btn-warning;
+                .btn-xs;
+                .btn-flat;
+            }
+
+            span.blockcontact a {
+                .btn;
+                .btn-danger;
+                .btn-xs;
+                .btn-flat;
+            }
+
+            span.unblockcontact a {
+                .btn;
+                .btn-success;
+                .btn-xs;
+                .btn-flat;
+            }
+
+            .userpicture{
+                &:extend(.profile-user-img, .img-responsive , .img-circle);
+            }
+        }
+
+        .between {
+            .make-xs-column(2);
+            text-align: center;
+            padding-top:45px;
+        }
+    }
+
+    .messagehistorytype {
+        color: #fff;
+
+        border: 0;
+        .hiddenelement {
+            display: none;
+        }
+
+        span.visible {
+            color: @text-color;
+            &:extend(.nav > li > a);
+            &:extend(.nav-tabs > li);
+            &:extend(.nav-tabs > li > a);
+            &:extend(.nav-tabs > li.active > a);
+        }
+        a.visible {
+            &:extend(.nav > li > a);
+            &:extend(.nav-tabs > li);
+            &:extend(.nav-tabs > li > a);
+            color: @link-color;
+            &:hover {
+                &:extend(.nav-tabs > li > a:hover);
+            }
+        }
+
+        span.visible, span.hiddenelement{
+            border-radius:0;
+        }
+    }
+
+    .mdl-align a {
+        color: #444;
+        padding-left: 10px;
+    }
+}
+
+.messagesend {
+    .mform {
+
+        fieldset .fitem .felement,
+        fieldset.hidden > div {
+            padding: 0;
+            margin: 0;
+            float: none;
+            width: 100%;
+            #id_submitbutton {
+                .pull-right;
+            }
+        }
+
+        .fitemtitle, .form-label {
+            .h3;
+            float: none;
+            text-align: left;
+        }
+        fieldset .fitem {
+            margin: 0;
+        }
+
+        .messagesendbox {
+            height:100px;
+        }
+    }
+}
+
+}
+}
+
+.yui3-widget.yui3-overlay {
+    z-index: 9999 !important;
+}
+
+#newmessageoverlay {
+    //fix for yui absolute positioning
+    width: @popover-max-width;
+    .popover;
+    position: fixed;
+    border-radius: @border-radius-small;
+    top: inherit;
+    left: inherit;
+    bottom: 5px;
+   // top : 60px;
+   right: 5px;
+   a {
+    text-decoration: underline;
+}
+display: block;
+#newmessagetext {
+    .popover-title;
+
+}
+#usermessage {
+    .popover-content;
+    border: 1px dotted @popover-border-color;
+    border-radius: @border-radius-small;
+    margin-top: 5px;
+    background-color: (lighten(@popover-bg, 10%));
+}
+#newmessagelinks {
+    margin: 5px 14px;
+}
+}
+
+textarea {
+    .form-control;
+    height: 200px;
+}
+
+/** Messenger send message dialog */
+.core_message-messenger-sendmessage-hidden {
+    display:none;
+}
+.core_message-messenger-sendmessage {
+    .message-actions {
+        position: relative;
+    }
+    .message-area {
+        height: 240px;
+        max-height: 100%;
+        position: relative;
+        margin-bottom: 10px;
+    }
+    .message-input {
+        width: 100%;
+        height: 100%;
+        .box-sizing(border-box);
+    }
+    .message-send {
+        margin: 0;
+        float: right;
+    }
+    .message-notice-area {
+        display: table;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .message-notice {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        > div {
+            background: #eee;
+            padding: 5px;
+            font-size: 12px;
+        }
+    }
+    .message-footer {
+        margin-top: 3px;
+        line-height: 20px;
+    }
+    .message-history {
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.messagesettingcomponent {
+    .mdl-align {
+        text-align: left;
+    }
+}

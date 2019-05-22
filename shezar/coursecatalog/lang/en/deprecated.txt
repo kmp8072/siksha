@@ -1,0 +1,7 @@
+placeholder:coursename,shezar_coursecatalog
+placeholder:coursepageurl,shezar_coursecatalog
+placeholder:dayssincecompletion,shezar_coursecatalog
+placeholder:daysuntildeadline,shezar_coursecatalog
+placeholder:firstname,shezar_coursecatalog
+placeholder:lastname,shezar_coursecatalog
+placeholder:managername,shezar_coursecatalog

@@ -1,0 +1,45 @@
+
+Change Log:
+===========
+Version 3.0.0
+Tweak - Optimized theme JS & CSS.
+Feature - Added Capability for admin to view user's enrolled Courses, Grades and Notes.
+
+Version 1.1
+Tweak - Login popup in header bar (Configurable).
+Tweak - Course progress bar is visible in the Course Overview block on Dashboard.
+Tweak - Replaced “ Site News “ link from the profile dropdown with “ Preferences “
+Tweak - Addition of Language selection menu in site header
+Tweak - Display selected category description on ‘Course archive page’.
+Tweak - Optimized theme JS & CSS.
+Tweak - Reduction in theme file size which will improve the load times.
+Tweak - Logo image will auto adjust irrespective of image dimensions.
+Fix - Minor CSS & JS fixes.
+Fix - Added support for content filters. (Language & Multimedia filters in course content)
+Fix - Added default placeholder image in case no image is set for homepage slider.
+Fix - Expand/Collapse section in course page.
+Fix - Distorted loading animation in dark sidebar blocks.
+Fix - Maintenance page layout fixes
+Feature - Google Analytics Integration 
+Feature - Dashboard sections can be set as open or closed per user basis.
+Feature - Category based course sorting.
+Feature - Support for custom site color added, color picker can be used to change color of the site.
+Feature - Revamped homepage layout.
+Feature - Revamped login page layout (which blends properly with overall theme).
+Feature - Support for plugins like Marking Manager, Grade Me & Course Contacts.
+Feature - Compatibility with custom course format plugins, for example: Flexible Sections.
+Feature - Added Initial Spanish translation
+
+Version 1.0.2
+Fix - CSS & JS fixes
+Fix - Added group capability checks for Assignments to be Graded block and Recent forums block.
+Fix - Added checks for locking User profile fields on Edit profile section.
+Feature - Setting to show/hide image on course sections.
+
+Version 1.0.1
+Fix - CSS & JS fixes
+Feature - Checkbox to disable Edwiser RemUI dashboard widgets in the DashBoard settings.
+Feature - Comptible with Moodle 3.1
+
+Version 1.0.0
+Inital Release.

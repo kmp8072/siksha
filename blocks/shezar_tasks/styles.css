@@ -1,0 +1,27 @@
+.block_shezar_tasks .content ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+.block_shezar_tasks .content li {
+    padding: 5px;
+    position: relative;
+    min-height: 30px;
+    clear: both;
+}
+
+.block_shezar_tasks .content li .information {
+    float: right;
+}
+
+.block_shezar_tasks .content li :first-child {
+    margin-right: 3px;
+    float: left;
+}
+
+.block_shezar_tasks .content li span,
+.block_shezar_tasks .content li > a {
+    vertical-align: top;
+    padding-top: 5px;
+    padding-left: 3px;
+}

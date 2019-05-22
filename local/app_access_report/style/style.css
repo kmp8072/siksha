@@ -1,0 +1,44 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+	
+.select2-container .select2-selection--single{
+    height:34px !important;
+}
+.select2-container--default .select2-selection--single{
+         border: 1px solid #ccc !important; 
+     border-radius: 0px !important; 
+}
+.form-group{
+	margin-bottom: 5px !important;
+}
+	
+.glyphicon-arrow-down:before{
+  display: none;
+}
+.arrow-down{
+  margin-bottom: 5px;
+}
+.dropdown-filter-icon{
+  border: 1px solid #afafaf !important;
+  border-radius: 2px;
+}
+/*.dropdown-filter-content{
+  right:0;
+}*/
+.no-overflow {
+    width: 100%;
+    }
+    .table {
+    width: 240% !important;
+    max-width: 240% !important;
+  }
+  .custom-inline{
+        display: inline;
+    vertical-align: middle;
+    float: right !important;
+  }
+.overflow-height{
+  overflow-y: scroll;
+  height: 60%;
+}
+
+  

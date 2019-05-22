@@ -1,0 +1,8 @@
+{
+  "moodle-shezar_program-categoryexpander": {
+    "requires": [
+        "node",
+        "event-key"
+    ]
+  }
+}
