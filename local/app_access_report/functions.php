@@ -261,6 +261,18 @@ global $USER, $DB, $CFG;
 $userid=$data['userid'];
 $guruid=$data['optradio'];
 
+// find the device token of guru to send push notification
+
+$guru_details_query="SELECT u.id,CONCAT(u.firstname,' ',u.lastname) AS gurufullname,u.device_token,u.phone1 FROM mdl_user WHERE id=$guruid";
+
+$guru_details_obj=$DB->get_record_sql($guru_details_query);
+
+$device_token=$guru_details_obj->device_token;
+
+$gurufullname=$guru_details_obj->gurufullname;
+
+$mobile=$guru_details_obj->phone1;
+
 // check if new joinee id is already in table 
 
  $check_existence_query="SELECT id FROM {guru_nj_mapping} WHERE nj_id=$userid";
@@ -274,6 +286,51 @@ if (empty($check_existence_obj)) {
 
 	if($DB->execute($insert_nj_query)){
 
+        // send message to guru 
+        $message2 = 'Dear '.$gurufullname.', You have been assigned as guru to a user ';
+      $time = date('d-m-YTH:i:s');
+      $message2 = urlencode($message2);
+      $url2 = "http://alotsolutions.in/API/WebSMS/Http/v1.0a/index.php?username=ShezarWeb&password=^yiIVY!9&sender=TCLCPB&to=$mobile&message=$message2&reqid=1";
+      $curl2 = curl_init();
+       // OPTIONS:
+       curl_setopt($curl2, CURLOPT_URL, $url2);
+       curl_setopt($curl2, CURLOPT_RETURNTRANSFER, 1);
+       curl_setopt($curl2, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+       $result = curl_exec($curl2);
+       //if(!$result){die("Connection Failure");}
+       curl_close($curl2); 
+
+       // now send push notification
+
+        // API access key from Google API's Console
+define('API_ACCESS_KEY','YOUR-API-ACCESS-KEY-GOES-HERE');
+$url = 'https://fcm.googleapis.com/fcm/send';
+$registrationIds = array($_GET['id']);
+// prepare the message
+$message = array( 
+  'title'     => 'This is a title.',
+  'body'      => 'Here is a message.',
+  'vibrate'   => 1,
+  'sound'      => 1
+);
+$fields = array( 
+  'registration_ids' => $device_token, 
+  'data'             => $message
+);
+$headers = array( 
+  'Authorization: key='.API_ACCESS_KEY, 
+  'Content-Type: application/json'
+);
+$ch = curl_init();
+curl_setopt( $ch,CURLOPT_URL,$url);
+curl_setopt( $ch,CURLOPT_POST,true);
+curl_setopt( $ch,CURLOPT_HTTPHEADER,$headers);
+curl_setopt( $ch,CURLOPT_RETURNTRANSFER,true);
+curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER,false);
+curl_setopt( $ch,CURLOPT_POSTFIELDS,json_encode($fields));
+$result = curl_exec($ch);
+curl_close($ch);
+
 		return 1;
 	}else{
 
@@ -285,6 +342,51 @@ if (empty($check_existence_obj)) {
  $map_guru_to_nj_query="UPDATE {guru_nj_mapping} SET guru_id=$guruid,successchamp_id=$USER->id,status=0 WHERE nj_id=$userid";
 
 if($DB->execute($map_guru_to_nj_query)){
+
+
+    $message2 = 'Dear '.$gurufullname.', You have been assigned as guru to a user ';
+      $time = date('d-m-YTH:i:s');
+      $message2 = urlencode($message2);
+      $url2 = "http://alotsolutions.in/API/WebSMS/Http/v1.0a/index.php?username=ShezarWeb&password=^yiIVY!9&sender=TCLCPB&to=$mobile&message=$message2&reqid=1";
+      $curl2 = curl_init();
+       // OPTIONS:
+       curl_setopt($curl2, CURLOPT_URL, $url2);
+       curl_setopt($curl2, CURLOPT_RETURNTRANSFER, 1);
+       curl_setopt($curl2, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+       $result = curl_exec($curl2);
+       //if(!$result){die("Connection Failure");}
+       curl_close($curl2); 
+
+       // now send push notification
+
+        // API access key from Google API's Console
+define('API_ACCESS_KEY','YOUR-API-ACCESS-KEY-GOES-HERE');
+$url = 'https://fcm.googleapis.com/fcm/send';
+$registrationIds = array($_GET['id']);
+// prepare the message
+$message = array( 
+  'title'     => 'This is a title.',
+  'body'      => 'Here is a message.',
+  'vibrate'   => 1,
+  'sound'      => 1
+);
+$fields = array( 
+  'registration_ids' => $device_token, 
+  'data'             => $message
+);
+$headers = array( 
+  'Authorization: key='.API_ACCESS_KEY, 
+  'Content-Type: application/json'
+);
+$ch = curl_init();
+curl_setopt( $ch,CURLOPT_URL,$url);
+curl_setopt( $ch,CURLOPT_POST,true);
+curl_setopt( $ch,CURLOPT_HTTPHEADER,$headers);
+curl_setopt( $ch,CURLOPT_RETURNTRANSFER,true);
+curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER,false);
+curl_setopt( $ch,CURLOPT_POSTFIELDS,json_encode($fields));
+$result = curl_exec($ch);
+curl_close($ch);
 
 	return 1;
 

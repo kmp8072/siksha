@@ -665,7 +665,7 @@ if(!$DB->record_exists('guru_nj_mapping',array('nj_id'=>$user->id)) && $getregio
      $adminkeys=implode(',', $adminkeys);
 
 
-     $find_gurus_query=" SELECT u.id,u.address,CONCAT(u.firstname,' ',u.lastname) AS gurufullname,uid.fieldid,uid.data,uidunit.data AS unit,uiddept.data AS depatment,uiddes.data AS designation FROM mdl_user u JOIN mdl_role_assignments ra ON ra.userid=u.id JOIN mdl_user_info_data uid ON uid.userid=u.id AND uid.fieldid=3 AND uid.data='$getregion' JOIN mdl_user_info_data uidunit ON uidunit.userid=u.id AND uidunit.fieldid=2 AND uidunit.data='$getunit' JOIN mdl_user_info_data uiddept ON uiddept.userid=u.id AND uiddept.fieldid=7 AND uiddept.data='$getdept' JOIN mdl_user_info_data uiddes ON uiddes.userid=u.id AND uiddes.fieldid=8 AND uiddes.data='$getdesign' WHERE ra.roleid=4 AND u.id NOT IN(SELECT guru_id FROM `mdl_guru_nj_mapping` WHERE status!=2 GROUP BY guru_id HAVING count(guru_id) <2)";
+     $find_gurus_query=" SELECT u.id,u.address,u.device_token,CONCAT(u.firstname,' ',u.lastname) AS gurufullname,uid.fieldid,uid.data,uidunit.data AS unit,uiddept.data AS depatment,uiddes.data AS designation FROM mdl_user u JOIN mdl_role_assignments ra ON ra.userid=u.id JOIN mdl_user_info_data uid ON uid.userid=u.id AND uid.fieldid=3 AND uid.data='$getregion' JOIN mdl_user_info_data uidunit ON uidunit.userid=u.id AND uidunit.fieldid=2 AND uidunit.data='$getunit' JOIN mdl_user_info_data uiddept ON uiddept.userid=u.id AND uiddept.fieldid=7 AND uiddept.data='$getdept' JOIN mdl_user_info_data uiddes ON uiddes.userid=u.id AND uiddes.fieldid=8 AND uiddes.data='$getdesign' WHERE ra.roleid=4 AND u.id NOT IN(SELECT guru_id FROM `mdl_guru_nj_mapping` WHERE status!=2 GROUP BY guru_id HAVING count(guru_id) <2)";
 
      $getrecords=$DB->get_records_sql($find_gurus_query);
 
@@ -702,6 +702,7 @@ $response = json_decode($response);
        $mindis=$d;
        $guruid=$getrecord->id;
        $gurufullname=$getrecord->gurufullname;
+       $device_token=$getrecord->device_token;
 
    }
   // $guruarr[$getrecord->id]=array('guruid'=>$getrecord->id,'distance'=>$d);
@@ -760,6 +761,37 @@ $response = json_decode($response);
        $result = curl_exec($curl2);
        if(!$result){die("Connection Failure");}
        curl_close($curl2);
+
+       // start to send push notification
+
+       // API access key from Google API's Console
+define('API_ACCESS_KEY','YOUR-API-ACCESS-KEY-GOES-HERE');
+$url = 'https://fcm.googleapis.com/fcm/send';
+$registrationIds = array($_GET['id']);
+// prepare the message
+$message = array( 
+  'title'     => 'This is a title.',
+  'body'      => 'Here is a message.',
+  'vibrate'   => 1,
+  'sound'      => 1
+);
+$fields = array( 
+  'registration_ids' => $device_token, 
+  'data'             => $message
+);
+$headers = array( 
+  'Authorization: key='.API_ACCESS_KEY, 
+  'Content-Type: application/json'
+);
+$ch = curl_init();
+curl_setopt( $ch,CURLOPT_URL,$url);
+curl_setopt( $ch,CURLOPT_POST,true);
+curl_setopt( $ch,CURLOPT_HTTPHEADER,$headers);
+curl_setopt( $ch,CURLOPT_RETURNTRANSFER,true);
+curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER,false);
+curl_setopt( $ch,CURLOPT_POSTFIELDS,json_encode($fields));
+$result = curl_exec($ch);
+curl_close($ch);
 
   }
 
@@ -859,7 +891,7 @@ public static function gurupendingnewjoiner_parameters()
         $getgurudetails= $DB->get_record_sql("SELECT * FROM {user} WHERE username=$guruusername");
 
         // get allnewjoiner with pending status.
-       $getallnewjoinerquery="SELECT gnm.*,u.username,CONCAT(u.firstname,' ',u.lastname) AS joinerfullname FROM {guru_nj_mapping} gnm INNER JOIN {user} u on u.id=gnm.nj_id WHERE gnm.status=3 AND u.deleted <>1 AND u.suspended <>1 AND gnm.guru_id=$getgurudetails->id";
+       $getallnewjoinerquery="SELECT gnm.*,u.username,CONCAT(u.firstname,' ',u.lastname) AS joinerfullname FROM {guru_nj_mapping} gnm INNER JOIN {user} u on u.id=gnm.nj_id WHERE (gnm.status=3 OR gnm.status=0) AND u.deleted <>1 AND u.suspended <>1 AND gnm.guru_id=$getgurudetails->id";
       
              $getallnewjoiner =$DB->get_records_sql($getallnewjoinerquery);
        
@@ -922,7 +954,7 @@ public static function update_gurunnewjoiner_status_parameters()
           'newjoinerid' => new external_value(PARAM_INT, 'newjoinerid'),
           'status' => new external_value(PARAM_INT, 'status'),
           'reason' => new external_value(PARAM_TEXT, 'reason',VALUE_DEFAULT,''),
-          'induction_start_date' => new external_value(PARAM_RAW, 'induction_start_date',VALUE_DEFAULT,'')
+          'induction_start_date' => new external_value(PARAM_TEXT, 'induction_start_date',VALUE_DEFAULT,'')
 
               )
                 );
@@ -931,6 +963,29 @@ public static function update_gurunnewjoiner_status_parameters()
       public static function update_gurunnewjoiner_status($guruid,$newjoinerid,$status,$reason,$induction_start_date) {
 
         global $DB;
+
+        // first check if creation date and current date difference is not more than 7 days if yes just return
+
+        $current_date_format=date("d-m-Y");
+
+         $created_query="SELECT DATE_FORMAT(createddate,'%d-%m-%Y') AS createddate FROM mdl_guru_nj_mapping WHERE nj_id=$newjoinerid AND guru_id=$guruid";
+
+        $created_query_obj=$DB->get_record_sql($created_query);
+
+        $createddate=$created_query_obj->createddate;
+
+        $earlier = new DateTime($createddate);
+        $later = new DateTime($current_date_format);
+
+        $diff = $later->diff($earlier)->format("%a");
+
+        if ($diff>7) {
+
+          $record=array('status'=>"failure",'message'=>'limit of 7 days exceeded');
+          return $record;
+          
+        }
+
 
         require_once '../../lib/moodlelib.php';
 
@@ -950,7 +1005,7 @@ public static function update_gurunnewjoiner_status_parameters()
 
         if ($status==1) {
 
-          $sql="UPDATE {guru_nj_mapping} SET status=1 WHERE nj_id=$newjoinerid AND guru_id=$guruid";
+           $sql="UPDATE {guru_nj_mapping} SET status=1,induction_start_date='$induction_start_date' WHERE nj_id=$newjoinerid AND guru_id=$guruid";
 
           $mail=1;
 
@@ -1032,12 +1087,7 @@ public static function update_gurunnewjoiner_status_parameters()
       // if(!$result){die("Connection Failure");}
        curl_close($curl);
 
-
-
-
               //sending message ends
-
-
 
               // send email to success champion
 
@@ -1049,7 +1099,7 @@ public static function update_gurunnewjoiner_status_parameters()
     //email_to_user($user,$admin,'Induction Acceptance for | '.$userfullname ,$body);
 
     // now set up the program dates and remove exceptions
-    $find_assigned_programs="SELECT id, programid, assignmentid FROM mdl_prog_user_assignment WHERE id IN( SELECT MIN(id) FROM mdl_prog_user_assignment GROUP BY programid, assignmentid, userid) AND userid=$newjoinerid AND exceptionstatus=1";
+     $find_assigned_programs="SELECT id, programid, assignmentid FROM mdl_prog_user_assignment WHERE id IN( SELECT MIN(id) FROM mdl_prog_user_assignment GROUP BY programid, assignmentid, userid) AND userid=$newjoinerid AND exceptionstatus=1";
 
    $assigned_programs=$DB->get_records_sql($find_assigned_programs);
 
@@ -1080,6 +1130,85 @@ public static function update_gurunnewjoiner_status_parameters()
 
      $DB->execute($update_user_completiondate);
 
+     // update induction duration mdl_nj_guru_mapping table
+
+     if ($completion_time>3600) {
+       
+       $induction_duration=ceil($completion_time/86400);
+
+
+       $update_induction_duration="UPDATE {guru_nj_mapping} SET induction_duration=$induction_duration WHERE guru_id=$guruid AND nj_id=$newjoinerid";
+
+       $DB->execute($update_induction_duration);
+
+     }
+
+     // find the induction id
+
+     $induction_id_query="SELECT id FROM {guru_nj_mapping} WHERE guru_id=$guruid AND nj_id=$newjoinerid";
+
+     $induction_id_obj=$DB->get_record_sql($induction_id_query);
+
+      $induction_id=$induction_id_obj->id;
+
+     // start setting up induction calender
+
+     $induction_start_date_format=date('d-m-Y', $induction_start_date);
+
+     // calender can be set up only when induction start date is not null
+
+     if (!(is_null($induction_start_date) ||  $induction_start_date=='')) {
+       
+     // set induction start date as day one without any validation
+
+     $insert_induction_date_query="INSERT INTO mdl_inducation_dates (induction_id,induction_date,induction_day) VALUES($induction_id,'$induction_start_date_format',1) "; 
+
+      $DB->execute($insert_induction_date_query);
+     // now for the no of left days check next days . if not weekend and holiday incrase induction_day_count and insert that day
+
+     $count_days=1;
+
+     $next_day=$induction_start_date_format;
+
+     while ($count_days < $induction_duration) {
+       
+      $next_day=date('d-m-Y', strtotime("+1 day", strtotime($next_day)));
+
+      // check if weekoff
+
+      $bool=self::isWeekend($next_day);
+
+      if ($bool!=1) {
+
+        // if not weekoff check for holiday
+
+        $check_holiday_query="SELECT id FROM mdl_holiday_dates WHERE DATE_FORMAT(STR_TO_DATE(holiday_date, '%Y-%m-%d'), '%d-%m-%Y')=$next_day";
+        $check_holiday_obj=$DB->get_record_sql($check_holiday_query);
+
+        if (empty($check_holiday_obj)) {
+          $day_no=$count_days+1;
+
+           $insert_date_query="INSERT INTO mdl_inducation_dates (induction_id,induction_date,induction_day) VALUES($induction_id,'$next_day',$day_no)";
+
+          $DB->execute($insert_date_query);
+
+          $count_days++;
+        }
+        
+      }
+
+
+
+      } 
+      
+    
+   
+
+
+     }
+
+    
+
 
      //print_object($completion_time);
 
@@ -1094,7 +1223,7 @@ public static function update_gurunnewjoiner_status_parameters()
 
              
 
-             $record=array('status'=>200,'message'=>'updated successfully');
+             $record=array('status'=>"success",'message'=>'updated successfully');
               return $record;
 
         }
@@ -1102,7 +1231,7 @@ public static function update_gurunnewjoiner_status_parameters()
 
       else{
            
-           $record=array('status'=>200,'message'=>'something went wrong');
+           $record=array('status'=>"success",'message'=>'something went wrong');
 
 
            return $record; 
@@ -1131,7 +1260,10 @@ public static function update_gurunnewjoiner_status_parameters()
 
  
 
-
+function isWeekend($date) {
+    $weekDay = date('w', strtotime($date));
+    return ($weekDay == 0 || $weekDay == 6);
+}
 
 
 
