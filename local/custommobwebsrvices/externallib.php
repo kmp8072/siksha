@@ -964,6 +964,15 @@ public static function update_gurunnewjoiner_status_parameters()
 
         global $DB;
 
+
+
+
+        
+
+    
+
+
+
         // first check if creation date and current date difference is not more than 7 days if yes just return
 
         $current_date_format=date("d-m-Y");
@@ -1056,6 +1065,34 @@ public static function update_gurunnewjoiner_status_parameters()
              $user->maildisplay = true;
              $user->mailformat = 1;
 
+
+             // insert program id in mdl_nj_guru_mapping table if not inserted
+
+        $check_query="SELECT induction_program_id FROM mdl_guru_nj_mapping WHERE nj_id=$newjoinerid AND guru_id=$guruid";
+
+        $check_obj=$DB->get_record_sql($check_query);
+
+        $check=$check_obj->induction_program_id;
+
+        if (is_null($check) || $check=='') {
+
+          // find program details considering first assigned program is induction program   
+
+    $find_programs_query="SELECT MIN(id),programid FROM mdl_prog_user_assignment WHERE userid=$newjoinerid";
+
+    $program_id_obj=$DB->get_record_sql($find_programs_query);
+
+    $programid=$program_id_obj->programid;
+
+    // update in mdl_nj_guru_mapping table
+
+    $update_query="UPDATE mdl_guru_nj_mapping SET induction_program_id=$programid,successchamp_id=$success_champion_obj->id WHERE nj_id=$newjoinerid AND guru_id=$guruid";
+
+    $DB->execute($update_query);
+         
+        }
+
+
              if ($mail==0) {
 
               $body='Hi'.' '.$success_champion_obj->firstname.' '.$success_champion_obj->lastname.',
@@ -1099,7 +1136,7 @@ public static function update_gurunnewjoiner_status_parameters()
     //email_to_user($user,$admin,'Induction Acceptance for | '.$userfullname ,$body);
 
     // now set up the program dates and remove exceptions
-     $find_assigned_programs="SELECT id, programid, assignmentid FROM mdl_prog_user_assignment WHERE id IN( SELECT MIN(id) FROM mdl_prog_user_assignment GROUP BY programid, assignmentid, userid) AND userid=$newjoinerid AND exceptionstatus=1";
+     $find_assigned_programs="SELECT min(id) as id, programid, assignmentid FROM mdl_prog_user_assignment WHERE id IN( SELECT MIN(id) FROM mdl_prog_user_assignment GROUP BY programid, assignmentid, userid) AND userid=$newjoinerid AND exceptionstatus=1";
 
    $assigned_programs=$DB->get_records_sql($find_assigned_programs);
 
@@ -1762,6 +1799,90 @@ return $getrecord->data;
 
 }
 
+
+public static function show_my_induction_parameters() {
+        return new external_function_parameters(
+                array( 
+                  'userid' => new external_value(PARAM_INT,'USER ID')  
+                ));
+}
+ public static function show_my_induction($userid) {
+         global $USER,$DB;
+         
+         // first of all find induction ids for this user
+
+    $induction_id_query="SELECT id FROM mdl_guru_nj_mapping WHERE nj_id=$userid";
+
+    $induction_id_obj=$DB->get_record_sql($induction_id_query);
+
+    $induction_id=$induction_id_obj->id;  
+
+    // find program details considering first assigned program is induction program   
+
+    $find_programs_query="SELECT MIN(id),programid FROM mdl_prog_user_assignment WHERE userid=$userid";
+
+    $program_id_obj=$DB->get_record_sql($find_programs_query);
+
+    $programid=$program_id_obj->programid;
+
+    // find program details
+
+    $program_details_query="SELECT id,category,fullname,shortname FROM {prog} WHERE available=1 AND visible=1 AND id=$programid";
+
+    $programdetails=$DB->get_record_sql($program_details_query);
+
+    // find induction dates for the induction id
+
+    $induction_dates_query="SELECT * FROM mdl_inducation_dates WHERE induction_id=$induction_id";
+
+    $induction_dates=$DB->get_records_sql($induction_dates_query);
+
+    $induction_calender=array('program_details'=>$programdetails,'induction_dates'=>$induction_dates);
+
+    // print_object($induction_calender);
+
+    // die();
+
+    return $induction_calender;
+
+
+       
+}
+
+ public static function show_my_induction_returns() { 
+
+             return new external_single_structure(
+                
+                  array(
+
+                    'program_details' => new external_single_structure(
+                      
+                      array(
+
+                    'id'=>new external_value(PARAM_INT,'id'),
+                    'category'=>new external_value(PARAM_INT,'category'),
+                    'fullname'=>new external_value(PARAM_TEXT,'fullname'),
+                    'shortname'=>new external_value(PARAM_TEXT,'shortname')
+                      )   
+                     ),
+
+                    'induction_dates' => new external_multiple_structure(
+                        new external_single_structure(
+                  array(
+
+                    'id'=>new external_value(PARAM_INT,'id'),
+                    'induction_id'=>new external_value(PARAM_INT,'induction_id'),
+                    'induction_date'=>new external_value(PARAM_RAW,'induction_date'),
+                    'induction_day'=>new external_value(PARAM_INT,'induction_day')
+                  )
+                )
+
+              )
+            )
+          );
+         
+             
+}
 
 
 

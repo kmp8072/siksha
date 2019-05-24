@@ -86,7 +86,7 @@ echo "<h4>Assign a guru to ".$nj_name."</h4>";
 
         //check if entry for nj exists
         
-        $map_guru_to_nj_query="UPDATE {guru_nj_mapping} SET guru_id=$guruid,status=0 WHERE nj_id=$njid";
+        $map_guru_to_nj_query="UPDATE {guru_nj_mapping} SET guru_id=$guruid,status=3 WHERE nj_id=$njid";
 
         if($DB->execute($map_guru_to_nj_query)){
 

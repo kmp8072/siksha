@@ -282,7 +282,7 @@ $check_existence_obj=$DB->get_record_sql($check_existence_query);
 if (empty($check_existence_obj)) {
 	// make a entry for the new joinee to this table
 
-	 $insert_nj_query="INSERT INTO {guru_nj_mapping} (guru_id,nj_id,status) VALUES($guruid,$userid,0)";
+	 $insert_nj_query="INSERT INTO {guru_nj_mapping} (guru_id,nj_id,status,successchamp_id) VALUES($guruid,$userid,3,$USER->id)";
 
 	if($DB->execute($insert_nj_query)){
 
@@ -339,7 +339,7 @@ curl_close($ch);
 
 }else{
 
- $map_guru_to_nj_query="UPDATE {guru_nj_mapping} SET guru_id=$guruid,successchamp_id=$USER->id,status=0 WHERE nj_id=$userid";
+ $map_guru_to_nj_query="UPDATE {guru_nj_mapping} SET guru_id=$guruid,successchamp_id=$USER->id,status=3 WHERE nj_id=$userid";
 
 if($DB->execute($map_guru_to_nj_query)){
 

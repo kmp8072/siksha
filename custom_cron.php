@@ -15,7 +15,7 @@ $duration_query="SELECT DISTINCT id,nj_id,guru_id,UNIX_TIMESTAMP(createddate) AS
 
 $duration_objs=$DB->get_records_sql($duration_query);
 
-print_object($duration_objs);
+//print_object($duration_objs);
 
 echo "updating nj_guru_mapping and detaching if completed one year period";
 echo "<br>";
