@@ -34,6 +34,7 @@ $mainnav = $navigation->add('Induction Module', "#");
 		$mainnav->add("Manually Map a NJ to Guru ", new moodle_url($CFG->wwwroot . '/local/induction_module/manual_nj_guru_map/dashboard.php'));
 		$mainnav->add("App access report", new moodle_url($CFG->wwwroot . '/local/app_access_report/dashboard.php'));
 		$mainnav->add(get_string('name', 'local_induction_logs'), new moodle_url($CFG->wwwroot . '/local/induction_logs/dashboard.php'));
+		$mainnav->add('Attendance', new moodle_url($CFG->wwwroot . '/local/induction_module/attendance.php'));
 							
 }
 
